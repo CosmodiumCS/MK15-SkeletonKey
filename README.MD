@@ -136,16 +136,16 @@ key
 **[Soul](https://soulsender.github.io): Lead Discord Bot Dev / Shellscripter / Project Manager**
 Worked on multi-distro (debian/arch/void) installer support for `install.sh`. Lead developer on the [Earth Invader](https://github.com/Soulsender/Earth-Invader) discord bot. Credited with giving SkeletonKey its colors. Also might or might not have had something to do with the original beta name "Earth Invader". 
 
-**[BlueCosmo](https://twitter.com/CosmodiumCS): Lead Python / Shellscript Developer**
+**[BlueCosmo](https://github.com/PrettyBoyCosmo): Lead Python / Shellscript Developer**
 Started Cosmodium at 17 and since then has made significant changes in the cybersecurity community. A reasonably known content creator and python programming whiz to say the least.    
   
-**[Fyzz](): Lead Python Developer**   
+**[Fyzz](https://github.com/FyzzLive): Lead Python Developer**   
 Cryptocurrency and cryptography expert, always happy to add another cipher.
 
-**[Cythes](https://twitter.com/CythesOut): Project Manager (Retired)**
+**[Cythes](https://github.com/AlexKollar): Project Manager (Retired)**
 I started learning computers around middle school age with my discovery & passion of PC Gaming.  A few years later I'd stumbled into Ubuntu 8.04 soon started learning programming, hacking on and off, while over the next decade working on projects ranging from Android personal safety applications to light game development.
 
-**[Mart](): Developer**
+**[Mart](https://github.com/marvhus): Developer**
 I started tinkering with computers I think around primary school, then in junior high school I started doing more tech stuff, then in high school I started learning more proper programming, and I began to do a lot of programming in my spare time, and at school, but I was always at least 10 steps ahead of what my class was learning, and eventually I ended up finding this place.
 
 ## Testers:
