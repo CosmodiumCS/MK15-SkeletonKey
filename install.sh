@@ -1,5 +1,5 @@
 #!/bin/bash
-# installer for Cryptex
+# installer for SkeletonKey
 # created by : Soulsender and C0SM0
 # DO NOT FUCK WITH THIS SCRIPT
 
@@ -14,7 +14,7 @@ function staging {
     # continue prompt
     while true
     do
-    read -r -p "This will copy Cryptex to your home directory. If you already had Cryptex installed, this will reinstall it. Would you like to continue? [Y/n]" input
+    read -r -p "This will copy SkeletonKey to your home directory. If you already had SkeletonKey installed, this will reinstall it. Would you like to continue? [Y/n]" input
     case $input in
         [yY][eE][sS]|[yY])
         echo -e "${green}Continuing...${reset}"
@@ -38,9 +38,9 @@ function staging {
 
     # staging
     echo -e "${blue}[*] Staging process...${reset}"
-    rm -rf ~/.Cryptex
+    rm -rf ~/.SkeletonKey
     cd ..
-    cp -r Cryptex ~/.Cryptex
+    cp -r SkeletonKey ~/.SkeletonKey
     echo -e "${green}[+] Complete${reset}"
 }
 
@@ -49,20 +49,20 @@ function alias_workflow {
     echo -e "${blue}[*] Setting up alias...${reset}"
 
     # check if it already exists in bashrc
-    if ! cat ~/.bashrc | grep "CRYPTEX_PATH" > /dev/null; then
+    if ! cat ~/.bashrc | grep "SkeletonKey_PATH" > /dev/null; then
         # Do it in one command instead of repeating yourself.
         echo "
-        export CRYPTEX_PATH=\"~/.Cryptex\"
-        alias cryptex=\"python3 ~/.Cryptex/main.py\"
+        export SkeletonKey_PATH=\"~/.SkeletonKey\"
+        alias key=\"python3 ~/.SkeletonKey/main.py\"
         " >> ~/.bashrc
     fi
 
     #check if it already exists in zshrc
-    if ! cat ~/.zshrc | grep "CRYPTEX_PATH" > /dev/null; then
+    if ! cat ~/.zshrc | grep "SkeletonKey_PATH" > /dev/null; then
         # Do it in one command instead of repeating yourself.
         echo "
-        export CRYPTEX_PATH=\"~/.Cryptex\"
-        alias cryptex=\"python3 ~/.Cryptex/main.py\"
+        export SkeletonKey_PATH=\"~/.SkeletonKey\"
+        alias key=\"python3 ~/.SkeletonKey/main.py\"
         " >> ~/.zshrc
     fi
 
@@ -74,7 +74,7 @@ function alias_workflow {
     # clean up
     echo -e "${green}[+] Installation Successful"
     echo -e "[+] Please Restart your terminal"
-    echo -e "[+] type 'cryptex' launch Cryptex${reset}"
+    echo -e "[+] type 'key' launch SkeletonKey${reset}"
     bash
 }
 
@@ -101,8 +101,8 @@ case "$1" in
         - Arch
         - Void
 
-        Please see the Cryptex README for more infomation:
-        https://github.com/CryptexProject/Cryptex
+        Please see the SkeletonKey README for more infomation:
+        https://github.com/CosmodiumCS/SkeletonKey
   "
   exit 0
 ;;

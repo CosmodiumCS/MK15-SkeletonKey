@@ -24,7 +24,7 @@ _________            .___     ____  ___
         \\/            \\/    \\/      \\_/
 
 
-        The Codex Project Syntax
+        SkeletonKey Syntax
 
         First argument: Ciphers
         -b = base64 encoding

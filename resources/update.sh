@@ -1,16 +1,16 @@
 #!/bin/bash
-# updater for Cryptex
+# updater for SkeletonKey
 # created by : C0SM0
 
 # remove previous version
 cd ~
-rm -rf .Cryptex
+rm -rf .SkeletonKey
 
 # install new version
-git clone https://github.com/AlexKollar/Cryptex.git
+git clone https://github.com/CosmodiumCS/SkeletonKey
 
 # install dependencies
-cd Cryptex
+cd SkeletonKey
 chmod +x install.sh
 ./install.sh
 

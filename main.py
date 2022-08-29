@@ -25,37 +25,37 @@ def get_ciphers():
 
     return output_list
 
-# updates cryptex
+# updates skeletonkey
 def update():
 
     cmd_prefix = Fore.GREEN + '[~] ' + Fore.RESET
     print("\n[*] Checking for updates...")
 
     # get latest version nubmer
-    os.system("curl https://raw.githubusercontent.com/AlexKollar/Cryptex/master/version.txt | tee ~/.Cryptex/latest.txt")
+    os.system("curl https://raw.githubusercontent.com/AlexKollar/SkeletonKey/master/version.txt | tee ~/.SkeletonKey/latest.txt")
 
     # save version nubmers to memory
     current_version = float(open(f"{b.local_path}/version.txt", "r").read())
     latest_version = float(open (f"{b.local_path}/latest.txt", "r").read())
 
     # remove version number file
-    os.system("rm -rf ~/.Cryptex/latest.txt")
+    os.system("rm -rf ~/.SkeletonKey/latest.txt")
 
     # if new version is available, update
     if latest_version > current_version:
         print("\n[+] Update found")
-        print(cmd_prefix + "Update Cryptex? [y/n]\n")
+        print(cmd_prefix + "Update SkeletonKey? [y/n]\n")
 
         # user input, option
         option = input(f"{b.header}")
 
         # update
         if option == "y":
-            os.system(f"sh ~/.Cryptex/resources/update.sh")
+            os.system(f"sh ~/.SkeletonKey/resources/update.sh")
 
     # otherwise, run main code
     else:
-        print("\n[+] Cryptex already up to date")
+        print("\n[+] SkeletonKey already up to date")
 
 # output function
 def output(data, output): 
@@ -74,20 +74,20 @@ def output(data, output):
             # exception
                 print(f'\n{b.FAIL}[✖] Failed:{b.END}\n{data[0]}\n')
 
-# uninstalls cryptex
+# uninstalls skeletonkey
 def remove():
 
     cmd_prefix = Fore.RED + '[~] ' + Fore.RESET
 
     # confirmation
-    print("\n" + cmd_prefix + "Are you sure you want to remove Cryptex? [y/n]\n")
+    print("\n" + cmd_prefix + "Are you sure you want to remove SkeletonKey? [y/n]\n")
 
     # user input
     option = input(b.header)
 
-    # delete Cryptex
+    # delete SkeletonKey
     if option == "y":
-        os.system("rm -rf ~/.Cryptex")
+        os.system("rm -rf ~/.SkeletonKey")
 
 # command line interface
 def cli(args_exist):
@@ -111,7 +111,7 @@ def cli(args_exist):
             text = ''
             for index, layer in enumerate(layers):
                 if index == 0:
-                    os.system(f'python3 ~/.Cryptex/main.py {layer} -lay')
+                    os.system(f'python3 ~/.SkeletonKey/main.py {layer} -lay')
                 elif index != len(layers) - 1:
                     try:
                         with open('temp_storage.txt', 'r') as temp:
@@ -119,7 +119,7 @@ def cli(args_exist):
                     except:
                         pass
                     else:
-                        os.system(f'python3 ~/.Cryptex/main.py {layer} -t "{layerd_storage}" -lay')
+                        os.system(f'python3 ~/.SkeletonKey/main.py {layer} -t "{layerd_storage}" -lay')
                 else:
                     try:
                         with open('temp_storage.txt', 'r') as temp:
@@ -127,7 +127,7 @@ def cli(args_exist):
                     except:
                         pass
                     else:
-                        os.system(f'python3 ~/.Cryptex/main.py {layer} -t "{layerd_storage}"')
+                        os.system(f'python3 ~/.SkeletonKey/main.py {layer} -t "{layerd_storage}"')
                         os.remove('temp_storage.txt')
 
         # flags for argument parsing
@@ -176,13 +176,13 @@ def cli(args_exist):
                 # ^ removes empty lines from the array
                 tmpFileVar.close()
 
-            # execute cryptex libraries
+            # execute skeletonkey libraries
             try:
                 module = importlib.import_module(f'ciphers.{args.cipher}')
 
             # exception handling
             except:
-                print(f"{b.FAIL}\n" + Fore.RED + f"[✖] Cipher May Not Exist\nTry 'cryptex -h' to see all ciphers{b.END}\n" + Fore.RESET)
+                print(f"{b.FAIL}\n" + Fore.RED + f"[✖] Cipher May Not Exist\nTry 'key -h' to see all ciphers{b.END}\n" + Fore.RESET)
 
             # executes libraries
             else:
@@ -242,7 +242,7 @@ def cli(args_exist):
             elif user_input == 'version':
                 print(b.version)
 
-            # exit cryptex
+            # exit skeletonkey
             elif user_input == 'exit' or user_input == 'quit':
                 exit()
                 break
@@ -251,7 +251,7 @@ def cli(args_exist):
             elif user_input == 'update':
                 update()
 
-            # uninstalls cryptex
+            # uninstalls skeletonkey
             elif user_input == 'uninstall' or user_input == 'remove':
                 remove()
 
@@ -261,7 +261,7 @@ def cli(args_exist):
 
             # runs crytpex libraries
             else:
-                os.system(f'python3 ~/.Cryptex/main.py {user_input.replace("cryptex", "")}')
+                os.system(f'python3 ~/.SkeletonKey/main.py {user_input.replace("key", "")}')
 
 # main code
 def main():
