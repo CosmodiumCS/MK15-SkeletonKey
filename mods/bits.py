@@ -34,6 +34,7 @@ help_menu = Fore.CYAN + """
 |       [r47] -------- ROT 47                                 |
 |       [b64] -------- Base64                                 |
 |       [bin] -------- Binary                                 |
+|       [pix] -------- Image Pixel                            |
 |       [hex] -------- Hex                                    |
 |       [oct] -------- Octal                                  |
 |       [mor] -------- Morse Code                             |

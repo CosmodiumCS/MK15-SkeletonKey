@@ -62,7 +62,7 @@ def output(data, output):
     if data:
         if data[1] == True and data[1]:
             # file
-            if output:
+            if output and ".png" not in output:
                 with open(output, 'w') as f:
                     f.write(data[0])
                 print(f'{b.SUCCESS}[✓] File Output Successful{b.END}')
@@ -138,6 +138,7 @@ def cli(args_exist):
             parser.add_argument('-d', '--decode', dest='decode', action='store_true')
             parser.add_argument('-b', '--brute', dest='brute', action='store_true')
             parser.add_argument('-i', '--inputFile', dest='inputFile', type=str)
+            parser.add_argument('-ii', '--inputImage', dest='inputImage', type=str)
             parser.add_argument('-o', '--output', dest='output', type=str)
             parser.add_argument('-t', '--text', help='String Input\n', dest='text', type=str)
             parser.add_argument('-k', '--key', help='Int Key\n', dest='key', type=str)
