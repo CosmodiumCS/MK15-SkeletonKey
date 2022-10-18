@@ -42,7 +42,7 @@ See the repository [here](https://github.com/Soulsender/Earth-Invader).
 git clone https://github.com/CosmodiumCS/SkeletonKey
 ```
 2. Execute installer
-> **YES** the SkeletonKey directory **IS** supposed to dissapear
+> **YES** the SkeletonKey directory **IS** supposed to disappear
 ```
 cd SkeletonKey
 chmod +x
