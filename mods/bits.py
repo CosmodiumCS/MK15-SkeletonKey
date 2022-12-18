@@ -22,51 +22,60 @@ banner = Fore.RED + f'''
 ''' + Fore.RESET
 
 help_menu = Fore.CYAN + """
-+-------------------------------------------------------------+
-| [+] EXAMPLE: key cc -d -t 'This is a string to encrypt'  |
-| [+] ARG 1. Cipher                                           |
-|       [cc] --------- Caesar Cipher                          |
-|       [vc] --------- Vingenere Cipher                       |
-|       [rc] --------- Reverse Cipher                         |
-|       [mc] --------- Multiplicative Cipher                  |
-|       [xor] -------- XOR Cipher                             |
-|       [r13] -------- ROT 13                                 |
-|       [r47] -------- ROT 47                                 |
-|       [b64] -------- Base64                                 |
-|       [bin] -------- Binary                                 |
-|       [pix] -------- Image Pixel                            |
-|       [hex] -------- Hex                                    |
-|       [oct] -------- Octal                                  |
-|       [mor] -------- Morse Code                             |
-|       [pho] -------- Phonetic Alphabet                      |
-|       [1337] ------- L33T 5P34K                             |
-|       [menc] ------- MENC                                   |
-|       [translate] -- Google Translate API                   |
-|       [md5] -------- MD5                                    |
-|       [se] --------- Static Encryption                      |
-|       [cleartext] -- Just Cleartext                         |
-+-------------------------------------------------------------+
-| [+] ARG 2. Cipher Method                                    |
-|       [-e] ---------- Encrypt                               |
-|       [-d] ---------- Decrypt                               |
-|       [-b] ---------- Break                                 |
-| [+] Google Translate API                                    |
-|       [-tr] --------- Translate                             |
-|       [-lang] ------- List Languages                        |
-+-------------------------------------------------------------+
-| [+] Additional Arguments                                    |
-|       [-t] ---------- Input Text                            |
-|       [-i] ---------- Input File                            |
-|       [-o] ---------- Output File                           |
-|       [-k] ---------- Encryption Key                        |
-|       [-r] ---------- Range                                 |
-|       [-w] ---------- Wordlist                              |
-|       [-src] -------- Source Language                       |
-|       [-dest] ------- Destination Language                  |
-+-------------------------------------------------------------+
-| [+] SkeletonKey Arguments                                       |
-|       [--help] ------ help                                  |
-|       [--version] --- version                               |
-|       [--update] ---- update                                |
-+-------------------------------------------------------------+
+┌─────────────────────────────────────────────────────────────┐
+│ [+] EXAMPLE: key cc -d -t 'This is a string to encrypt'     │
+│ [+] ARG 1. Cipher                                           │
+│       [cc] ───────── Caesar Cipher                          │
+│       [vc] ───────── Vingenere Cipher                       │
+│       [rc] ───────── Reverse Cipher                         │
+│       [mc] ───────── Multiplicative Cipher                  │
+│       [xor] ──────── XOR Cipher                             │
+│       [r13] ──────── ROT 13 Encoding                        │
+│       [r47] ──────── ROT 47 Encoding                        │
+│       [b64] ──────── Base64 Encoding                        │
+│       [bin] ──────── Binary Encoding                        │
+│       [pix] ──────── Image Pixel                            │
+│       [hex] ──────── Hex Encoding                           │
+│       [oct] ──────── Octal Encoding                         │
+│       [mor] ──────── Morse Code Cipher                      │
+│       [pho] ──────── Phonetic Alphabet Cipher               │
+│       [1337] ─────── L33T 5P34K Encoding                    │
+│       [menc] ─────── MENC Encoding                          │
+│       [translate] ── Google Translate API                   │
+│       [md5] ──────── MD5 Hash                               │
+│       [sha1] ─────── SHA1 Hash                              │
+│       [sha224] ───── SHA224 Hash                            │
+│       [sha384] ───── SHA384 Hash                            │
+│       [sha512] ───── SHA512 Hash                            │
+│       [blake2b] ──── Blake2b Hash                           │
+│       [blake2s] ──── Blake2s Hash                           │
+│       [twofish] ──── Twofish Encryption                     │
+│       [se] ───────── Static Encryption                      │
+│       [cleartext] ── Cleartext                              │
+├─────────────────────────────────────────────────────────────┤
+│ [+] ARG 2. Cipher Method                                    │
+│       [-e] ────────── Encrypt/Encode                        │
+│       [-d] ────────── Decrypt/Decode                        │
+│       [-b] ────────── Break/Brute Force                     │
+│ [+] Google Translate API                                    │
+│       [-tr] ───────── Translate                             │
+│       [-lang] ─────── List Languages                        │
+├─────────────────────────────────────────────────────────────┤
+│ [+] Additional Arguments                                    │
+│       [-t] ────────── Input Text                            │
+│       [-i] ────────── Input File                            │
+│       [-o] ────────── Output File                           │
+│       [-k] ────────── Encryption Key                        │
+│       [-s] ────────── Hash Salt                             │
+│       [-md] ───────── Encryption Mode                       │
+│       [-r] ────────── Range                                 │
+│       [-w] ────────── Wordlist                              │
+│       [-src] ──────── Source Language                       │
+│       [-dest] ─────── Destination Language                  │
+├─────────────────────────────────────────────────────────────┤
+│ [+] SkeletonKey Arguments                                   │
+│       [--help] ────── help                                  │
+│       [--version] ─── version                               │
+│       [--update] ──── update                                │
+└─────────────────────────────────────────────────────────────┘
 """ + Fore.RESET
