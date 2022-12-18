@@ -23,8 +23,8 @@ banner = Fore.RED + f'''
 
 help_menu = Fore.CYAN + """
 ┌─────────────────────────────────────────────────────────────┐
-│ [+] EXAMPLE: key cc -d -t 'This is a string to encrypt'     │
-│ [+] ARG 1. Cipher                                           │
+│ [■] EXAMPLE: key cc -d -t 'This is a string to encrypt'     │
+│ [■] ARG 1. Cipher                                           │
 │       [cc] ───────── Caesar Cipher                          │
 │       [vc] ───────── Vingenere Cipher                       │
 │       [rc] ───────── Reverse Cipher                         │
@@ -53,15 +53,15 @@ help_menu = Fore.CYAN + """
 │       [se] ───────── Static Encryption                      │
 │       [cleartext] ── Cleartext                              │
 ├─────────────────────────────────────────────────────────────┤
-│ [+] ARG 2. Cipher Method                                    │
+│ [■] ARG 2. Cipher Method                                    │
 │       [-e] ────────── Encrypt/Encode                        │
 │       [-d] ────────── Decrypt/Decode                        │
 │       [-b] ────────── Break/Brute Force                     │
-│ [+] Google Translate API                                    │
+│ [■] Google Translate API                                    │
 │       [-tr] ───────── Translate                             │
 │       [-lang] ─────── List Languages                        │
 ├─────────────────────────────────────────────────────────────┤
-│ [+] Additional Arguments                                    │
+│ [■] Additional Arguments                                    │
 │       [-t] ────────── Input Text                            │
 │       [-i] ────────── Input File                            │
 │       [-o] ────────── Output File                           │
@@ -73,7 +73,7 @@ help_menu = Fore.CYAN + """
 │       [-src] ──────── Source Language                       │
 │       [-dest] ─────── Destination Language                  │
 ├─────────────────────────────────────────────────────────────┤
-│ [+] SkeletonKey Arguments                                   │
+│ [■] SkeletonKey Arguments                                   │
 │       [--help] ────── help                                  │
 │       [--version] ─── version                               │
 │       [--update] ──── update                                │
