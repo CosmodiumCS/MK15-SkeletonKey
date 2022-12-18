@@ -142,6 +142,8 @@ def cli(args_exist):
             parser.add_argument('-o', '--output', dest='output', type=str)
             parser.add_argument('-t', '--text', help='String Input\n', dest='text', type=str)
             parser.add_argument('-k', '--key', help='Int Key\n', dest='key', type=str)
+            parser.add_argument('-s', '--salt', help='Hash Salt\n', dest='salt', type=str)
+            parser.add_argument('-md', '--mode', dest='mode', type=str)
             parser.add_argument('-ex', '--exclude', help='Exclude Character\n', dest='exclude', type=str)
             parser.add_argument('-w', '--wordlist', help='Wordlist File\n', dest='wordlist', type=str)
             parser.add_argument('-r', '--range', help='Range\n', dest='range', type=str)
