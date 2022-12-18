@@ -33,12 +33,19 @@ def encode(args):
     # All other args can be grabbed the same way
     # Example key = input.key | range = input.range
     text = args.text
+    salt = args.salt
 
     if text:
         # Run Decode
         output = f'Encoding | {text}'
 
-        result = hashlib.md5( text.encode('ascii')  ).hexdigest()
+        # Detect Salt
+        if salt:
+            result = hashlib.md5( salt.encode('ascii') +
+                                 text.encode('ascii')  ).hexdigest()
+            output += f'Salt | {salt}'
+        else:
+            result = hashlib.md5( text.encode('ascii')  ).hexdigest()
 
         output += f"\nMD5 Sum | {result}"
 
