@@ -50,6 +50,7 @@ help_menu = Fore.CYAN + """
 │       [blake2b] ──── Blake2b Hash                           │
 │       [blake2s] ──── Blake2s Hash                           │
 │       [twofish] ──── Twofish Encryption                     │
+│       [blowfish] ─── Blowfish Encryption                    │
 │       [se] ───────── Static Encryption                      │
 │       [cleartext] ── Cleartext                              │
 ├─────────────────────────────────────────────────────────────┤
