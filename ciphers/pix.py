@@ -1,77 +1,149 @@
 #!/usr/bin/python
+
 from PIL import Image
+import math
 
-# Custom Image pixel enc
-# created by : Fyzz
+# made by : Haze
 
-# help menu for cipheringing process
+# help menu for pixel encoding process
 help_menu = """
-+----------------------------------------------------------------+
-|  [+] ARGUMENTS Pixel Enc                                       |
-|  [+] ARG 1. Process                                            |
-|          [-e] ---------- Encrypt                               |
-|          [-d] ---------- Decrypt                               |
-+----------------------------------------------------------------+
-|  [+] ARG 2. Additional Aruments                                |
-|          [-t <input text>] ------- Input Text                  |
-|          [-i <copy file>] -------- Copy File                   |
-|          [-ii <input image>] ----- Input image [.png]          |
-|          [-o <output file>] ----+- Output File                 |
-|                                 +---> [enc: .png, dec: any]    |
-+----------------------------------------------------------------+ 
-|  [+] Example:                                                  |
-|          key pix -e -i copy.py -ii test.png -o encoded.png     |
-|          key pix -d -ii decode.png                             |
-+----------------------------------------------------------------+
+┌────────────────────────────────────────────────────────────────────┐
+│  [■] ARGUMENTS Pixel Encoding                                      │
+│  [■] ARG 1. Process                                                │
+│          [-e] ──────────────────── Encode                          │
+│          [-d] ──────────────────── Decode                          │ 
+├────────────────────────────────────────────────────────────────────┤
+│  [■] ARG 2. Additional Aruments                                    │
+│          [-t <input text>] ─────── Input Text                      │
+│          [-f <file>] ───────────── Input File                      │
+│          [-ii <input image>] ───── Input image                     │
+│          [-o <output file>] ────── Output File                     │
+│          [-c <channel> ] ───────── Channel                         │
+├────────────────────────────────────────────────────────────────────┤
+│  [■] ARG 3. Channel                                                │
+│          [-c red] ──────────────── Encode image on red channel     │
+│          [-c green] ────────────── Encode image on green channel   │
+│          [-c blue] ─────────────── Encode image on blue channel    │
+├────────────────────────────────────────────────────────────────────┤
+│  [■] Example:                                                      │
+│          key pix -e -t 'Hello World!' -c red -o encoded.png        │
+│          key pix -e -f textfile.txt -c red -o encoded.png          │
+│                                                                    │
+│          key pix -d -ii encoded.png -c red                         │
+│                                                                    │
+└────────────────────────────────────────────────────────────────────┘
 """
 
-# encode pix
-def encode(input):
-    # Error Handling
-    if (not input.inputFile or ".png" not in input.output):
-        return ["Invalid Input file or PNG", False]
+def encode(args):
+    text = args.text
+    file = args.file
+    output = args.output
+    channel = args.channel
 
-    # File Input / String Input
-    input_content = ""
-    if(input.inputFile):
-         input_content = open(input.inputFile, 'r').read()
-    if(input.text):
-         input_content = input.text
+    # Read the input text or file
+    if text:
+        pass
+    
+    elif file:
+        try:
+            with open(file, "r") as f:
+                text = f.read() 
 
-    # Add Ending Flag
-    file_with_ending = input_content + 'ÿ'
-    input_image = Image.open(input.inputImage)
-    pixel_map = input_image.load()
-    height = input_image.size[1]
+        except FileNotFoundError:
+            return ['Error: The file count not be found', False]
 
-    # Map through text
-    for i in range(0, len(file_with_ending)):
-        # Get current image rbg and set new with encryption
-        g, b = input_image.getpixel((i, height - 1))[1::]
-        pixel_map[i, height -
-                  1] = (int(ord(file_with_ending[i])), g, b)
+        except:
+            return ['Error: An unknown error occurred while reading the file', False]
 
-    # Outputs
-    input_image.save(f'{input.output}', format="png")
-    return [f"Encoded: '{input.output}' Created", True, False]
+    else:
+        return ['Error: No input text or file provided', False]
 
-# decode pix
-def decode(input):
-    # Error Handling
-    if (".png" not in input.inputImage):
-        return ["Invalid Input PNG", False]
+    # Calculate the size of the image
+    size = int(math.ceil(math.sqrt(len(text))))
 
-    input_image = Image.open(input.inputImage)
-    width, height = input_image.size
+    # Create an empty image with the calculated size
+    img = Image.new("RGB", (size, size))
+    pixels = img.load()
 
-    # Starter Value
-    output_text = ""
+    # Encode the text into the specified channel of the pixel values of the image
+    if channel.lower() == "red":
+        for i in range(len(text)):
+            x = i % size
+            y = i // size
+            r, g, b = pixels[x, y]
+            pixels[x, y] = (ord(text[i]), g, b)
 
-    # Map and decode
-    for i in range(0, width - 1):
-        r = input_image.getpixel((i, height - 1))[0]
-        if r == 255:
-            break
-        output_text += chr(r)
+    elif channel.lower() == "green":
+        for i in range(len(text)):
+            x = i % size
+            y = i // size
+            r, g, b = pixels[x, y]
+            pixels[x, y] = (r, ord(text[i]), b)
+            
+    elif channel.lower() == "blue":
+        for i in range(len(text)):
+            x = i % size
+            y = i // size
+            r, g, b = pixels[x, y]
+            pixels[x, y] = (r, g, ord(text[i]))
 
-    return [output_text, True]
+    else:
+        return ['Error: Invalid channel specified', False]
+
+    # Save the image
+    try:
+        img.save(output)
+
+    except:
+        return ['Error: An error occurred while saving the image', False]
+
+    if len(text) <= 100:
+        output = 'Encoding | {}\nChannel | {}\nOutput | {}'.format(
+                text, channel, output)
+        return [output, True]
+    
+    elif len(text) < 100:
+        output = 'Encoding | Text is to large to show\nChannel | {}\nOutput | {}'.format(
+                channel, output)
+        return [output, True]
+
+    else:
+        return ['Error: Output status failed but program ran successfully', True]
+
+def decode(args):
+    inputImage = args.inputImage
+    channel = args.channel
+
+    # Open the input image
+    img = Image.open(inputImage)
+    pixels = img.load()
+
+    # Decode the text from the specified channel of the pixel values of the image
+    decoded_text = ""
+    if channel.lower() == "red":
+        for i in range(img.size[0] * img.size[1]):
+            x = i % img.size[0]
+            y = i // img.size[0]
+            r, g, b = pixels[x, y]
+            decoded_text += chr(r)
+
+    elif channel.lower() == "green":
+        for i in range(img.size[0] * img.size[1]):
+            x = i % img.size[0]
+            y = i // img.size[0]
+            r, g, b = pixels[x, y]
+            decoded_text += chr(g)
+
+    elif channel.lower() == "blue":
+        for i in range(img.size[0] * img.size[1]):
+            x = i % img.size[0]
+            y = i // img.size[0]
+            r, g, b = pixels[x, y]
+            decoded_text += chr(b)
+    else:
+        return ['Error: Invalid channel specified', False]
+
+    output = "Decoding | {}\nChannel | {}\nDecoded | {}".format(
+            inputImage, channel, decoded_text)
+
+    return [output, True]
