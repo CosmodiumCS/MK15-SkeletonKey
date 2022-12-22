@@ -52,7 +52,8 @@ help_menu = Fore.CYAN + """
 │       [twofish] ──── Twofish Encryption                     │
 │       [blowfish] ─── Blowfish Encryption                    │
 │       [se] ───────── Static Encryption                      │
-│       [cleartext] ── Cleartext                              │
+│       [url] ──────── URL Encoding                           │
+│       [mo] ───────── Monoalphabetic Cipher                  │
 ├─────────────────────────────────────────────────────────────┤
 │ [■] ARG 2. Cipher Method                                    │
 │       [-e] ────────── Encrypt/Encode                        │
