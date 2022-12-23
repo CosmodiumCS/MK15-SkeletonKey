@@ -19,6 +19,16 @@ Under Development!
  - Monoalphabetic Cipher
  - URL Encoding
 
+### Plan:
+ - Windows Capable
+ - Fernet Encryption
+ - AES Encryption
+ - RSA Encryption
+ - 3/DES Encryption
+ - Compression Methods
+ - Fast Hash Brute Force Option
+ - Extend SHA Library
+
 SkeletonKey is an advanced cryptography hacking tool created by a joint development between [The Societal Security Guild](https://saintssec.com) and [Cosmodium CyberSecurity][ccs]. It was originally two seperate tools, one reffered to as "[Cryptex](https://github.com/SSGorg/Cryptex)" and the other as "[The Codex Project](https://github.com/CosmodiumCS/the-codex-project)". But on May 2, 2022, the lead developers [Cythes](https://github.com/AlexKollar) and [Blue Cosmo](https://github.com/CosmodiumCS) joined forces to build a central cryptography tool. 
 
 ---
