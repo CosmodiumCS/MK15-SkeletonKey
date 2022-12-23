@@ -9,6 +9,16 @@
 
 Under Development!
 
+### Added:
+ - Salt and raw hash function to MD5
+ - SHA1 to SHA512 Hashes
+ - Blake2b and Blake2s Hashes
+ - Twofish Encryption
+ - Blowfish Encryption
+ - Updated Pixel Encoding
+ - Monoalphabetic Cipher
+ - URL Encoding
+
 SkeletonKey is an advanced cryptography hacking tool created by a joint development between [The Societal Security Guild](https://saintssec.com) and [Cosmodium CyberSecurity][ccs]. It was originally two seperate tools, one reffered to as "[Cryptex](https://github.com/SSGorg/Cryptex)" and the other as "[The Codex Project](https://github.com/CosmodiumCS/the-codex-project)". But on May 2, 2022, the lead developers [Cythes](https://github.com/AlexKollar) and [Blue Cosmo](https://github.com/CosmodiumCS) joined forces to build a central cryptography tool. 
 
 ---
