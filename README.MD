@@ -5,7 +5,7 @@
 [onlyrat]: https://github.com/CosmodiumCS/OnlyRAT
 
 <!-- title -->
-# SkeletonKey
+# SkeletonKey V1.1
 
 Under Development!
 
