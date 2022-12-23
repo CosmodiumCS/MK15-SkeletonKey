@@ -10,7 +10,7 @@
 Under Development!
 
 ### Added:
- - Salt and raw hash function to MD5
+ - Salt and Raw Hash Function to MD5
  - SHA1 to SHA512 Hashes
  - Blake2b and Blake2s Hashes
  - Twofish Encryption
