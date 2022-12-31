@@ -5,26 +5,23 @@
 import getopt
 import sys
 
-#---------------------------------------------------------------------------------| Help Menu |
-# Make sure to edit this for your specific cipher
 help_menu = """
-      +------------------------------------------------------+
-      |  [+] ARGUMENTS MENC                                  |
-      |  [+] ARG 1. Process                                  |
-      |          [-e] ---------- Encrypt                     |
-      |          [-d] ---------- Decrypt                     |
-      +------------------------------------------------------+
-      |  [+] ARG 2. Additional Aruments                      |
-      |          [-t <plaintext>] --------- Input Text       |
-      |          [-k <plaintext>] --------- Input Key        |
-      +------------------------------------------------------+ 
-      |  [+] Example:                                        |
-      |          cryptex -menc -e -t "hello" -k "test"       |
-      |          cryptex -menc -d -t "test" -k "0C00070805"  |
-      +------------------------------------------------------+
-        """
+USAGE:
+  key menc [FLAGS] [OPTIONS]
 
-#-----------------------------------------------------------------------------------| Encoding |
+FLAGS:
+  -d, --decode  Decrypt input text
+  -e, --encode  Encrypt input text
+
+OPTIONS:
+  -k, --key <key>    Key for encoding or decoding
+  -t, --text <text>  Input text to encrypt or decrypt
+
+EXAMPLES:
+  key menc -e -t "hello" -k "test"
+  key menc -d -t "test" -k "0C00070805"
+"""
+
 def encode(_Input, alphabet, _Output):
 
     # Calculate the indexes of the characters in the input based of the alphabet variable

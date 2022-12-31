@@ -4,21 +4,21 @@
 
 # help menu for cipheringing process
 help_menu = """
-+--------------------------------------------------------------------------------------------------+
-| [✓] ARGUMENTS Pin Buster                                                                         |
-| [✓] ARG 1. Ciphering Process                                                                     |
-|         [-b] .......... Brute Force                                                              |
-| [✓] ARG 2. Additional Aruments                                                                   |
-|         [-t <plaintext>] --------- Input Text                                                    |
-|         [-i <input file>] -------- Input File [.txt]                                             |
-|         [-o <output file>] ------- Output File                                                   |
-|         [-r <number, number>] ---- Range                                                         |
-|               [You can either enter one number as a range, or 2 numbers as a range of ranges]    |
-+--------------------------------------------------------------------------------------------------+
-| [✓] Example:                                                                                     |
-|  cryptex pb -b -t "1234" -r 4                                                                    |
-|  cryptex pb -b -t "1234" -r 3, 5                                                                 | 
-+--------------------------------------------------------------------------------------------------+
+USAGE:
+  key pb [FLAGS] [OPTIONS]
+
+FLAGS:
+  -b, --brute  Brute force pin
+
+OPTIONS:
+  -i, --inputFile <input file>  Input file containing pins to brute force
+  -o, --output <output file>    Output file for brute forced pins
+  -r, --range <range>           Range or range of ranges to brute force
+  -t, --text <text>             Pin to brute force
+
+EXAMPLES:
+  key pb -b -t "1234" -r 4
+  key pb -b -t "1234" -r 3, 5
 """
 
 # brute function [!] Optional Per Cipher <----------------- [!]

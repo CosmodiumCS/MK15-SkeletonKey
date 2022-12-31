@@ -5,21 +5,21 @@
 
 # help menu for ciphering options
 help_menu = """
-+-----------------------------------------------------+
-|  [+] ARGUMENTS Multiplicative-Cipher                |
-|  [+] ARG 1. Ciphering Process                       |
-|        [-e] ---------- Encrypt                      |
-|        [-d] ---------- Decrypt                      |
-+-----------------------------------------------------+
-|  [+] ARG 2. Additional Aruments                     |
-|        [-k <int key>] ----------- Key               |
-|        [-t <plaintext>] --------- Input Text        |
-|        [-i <input file>] -------- Input File [.txt] |
-|        [-o <output file>] ------- Output File       | 
-+-----------------------------------------------------+   
-|  [+] Example:                                       |
-|  cryptex mc -e -k 7 -t hello                        |
-+-----------------------------------------------------+
+USAGE: 
+  key mc [FLAGS] [OPTIONS]
+
+FLAGS:
+  -d, --decrypt    Decrypt input text or file
+  -e, --encrypt    Encrypt input text or file
+
+OPTIONS:
+  -i, --inputFile <input file>    Input file to encrypt or decrypt
+  -k, --key <int key>             Key for multiplicative cipher
+  -o, --output <output file>      Output file for encrypted or decrypted text
+  -t, --text <text>               Input text to encrypt or decrypt
+
+EXAMPLES:
+  key mc -e -k 7 -t "hello"
 """
 
 # symbols that can't be processed through the cipher

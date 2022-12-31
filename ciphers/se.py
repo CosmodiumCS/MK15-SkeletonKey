@@ -7,18 +7,22 @@ import numpy as np
 
 # help menu for cipheringing process
 help_menu = """
-+------------------------------------------------------+
-| [✓] ARGUMENTS Static Encryption                      |
-| [✓] ARG 2. Additional Aruments                       |
-|         [-iw <number>] ----------- Image Width       |
-|         [-m ] -------------------- Use monocromatic  |
-+------------------------------------------------------+
-| [✓] Example:                                         |
-|  cryptex se -e                                       |
-|  cryptex se -e -iw 3                                 |
-|  cryptex se -d                                       |
-|  cryptex se -d -iw 3                                 |
-+------------------------------------------------------+
+USAGE:
+  key se [FLAGS] [OPTIONS]
+
+FLAGS:
+  -d, --decrypt  Decrypt input text or file
+  -e, --encrypt  Encrypt input text or file
+  -m, --mono     Use monochromatic encryption
+
+OPTIONS:
+  -iw, --image-width <image width>  Width of the resulting image
+
+EXAMPLES:
+  key se -e
+  key se -e -iw 3
+  key se -d
+  key se -d -iw 3
 """
 
 # Generate the image

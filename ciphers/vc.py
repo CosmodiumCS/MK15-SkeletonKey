@@ -10,24 +10,23 @@ import os
 
 # help menu for cipheringing process
 help_menu = """
-+---------------------------------------------------------------+
-|  [+] ARGUMENTS Vigenere Cipher                                |
-|  [+] ARG 1. Ciphering Process                                 |
-|          [-e] ---------- Encrypt                              |
-|          [-d] ---------- Decrypt                              |
-|          [-b] ---------- Brute Force                          |
-+---------------------------------------------------------------+ 
-|  [+] ARG 2. Additional Aruments                               |
-|          [-k <key>] --------------- Key                       | 
-|              [not required for bruteforcing '-b']             |
-|          [-t <plaintext>] --------- Input Text                |
-|          [-i <input file>] -------- Input File [.txt]         |
-|          [-o <output file>] ------- Output File               |
-|          [-l <max key length>] ---- Max Key Length [for '-b'] |
-+---------------------------------------------------------------+
-|  [+] Example:                                                 |
-|          cryptex vc -e -t hello -k world                      |
-+---------------------------------------------------------------+
+USAGE:
+  key vc [FLAGS] [OPTIONS]
+
+FLAGS:
+  -b, --brute   Brute force the vigenere cipher
+  -d, --decode  Decrypt input text or file
+  -e, --encode  Encrypt input text or file
+
+OPTIONS:
+  -i, --inputFile <input file>   Input file to encrypt or decrypt
+  -k, --key <key>                Key for encoding or decoding (not required for brute forcing)
+  -l, --maxKeyLength <length>    Max key length for brute forcing
+  -o, --output <output file>     Output file for encrypted or decrypted text
+  -t, --text <text>              Input text to encrypt or decrypt
+
+EXAMPLES:
+  key vc -e -t hello -k world
 """
 
 # letters for encryption process

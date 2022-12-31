@@ -4,18 +4,20 @@
 
 # help menu for ciphering process
 help_menu = """
-+-------------------------------------------------------+
-|  [+] ARGUMENTS Hexadecimal                            |
-|          [-e] -------- Encrypt                        |
-|          [-d] -------- Decrypt                        |
-|  [+] ARG 2. Additional Aruments                       |
-|          [-t <plaintext>] --------- Input Text        |
-|          [-i <input file>] -------- Input File [.txt] |
-|          [-o <output file>] ------- Output File       |
-+-------------------------------------------------------+
-|  [+] Example:                                         |
-|          cryptex hex -t hello                         |
-+-------------------------------------------------------+
+USAGE:
+  key hex [FLAGS] [OPTIONS]
+
+FLAGS:
+  -d, --decrypt  Decrypt input text or file
+  -e, --encrypt  Encrypt input text or file
+
+OPTIONS:
+  -i, --inputFile <input file>   Input file to encrypt or decrypt
+  -o, --output <output file>     Output file for encrypted or decrypted text
+  -t, --text <text>              Input text to encrypt or decrypt
+
+EXAMPLES:
+  key hex -e -t "hello"
 """
 
 # encode hex

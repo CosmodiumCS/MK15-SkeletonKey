@@ -1,31 +1,30 @@
 #!/usr/bin/env python3
 
-# created by : Mart | marvhus
+# added by : H4Z3
+# edit of Mart | marvhus MD5 module
 
 import hashlib
 
 # help menu for cipheringing process
 help_menu = """
-Usage:
-  key md5 [FLAGS] [OPTIONS]
+USAGE:
+  key sha512 [FLAGS] [OPTIONS]
 
 FLAGS:
-  -e, --encrypt     encrypt input text or file
-  -b, --brute       brute force hash
+  -b, --brute       Brute force
+  -e, --encrypt     Encrypt input text or file
 
 OPTIONS:
-  -t, --text <plaintext>         input text
-  -i, --inputFile <input file>   input file
-  -o, --output <output file>     output file
-  -w, --wordlist <input file>    wordlist file
-                                    required if brute forcing with wordlist '-b'
-  -r, --range <number>           maximum guess length
-                                    required if brute forcing dynamically '-b'
+  -i, --inputFile <input file>   Input file to encrypt or decrypt
+  -o, --output <output file>     Output file for encrypted or decrypted text
+  -r, --range <number>           Max guess length (required if brute forcing dynamically)
+  -t, --text <text>              Input text to encrypt or decrypt
+  -w, --wordlist <input file>    Wordlist (required if brute forcing with wordlist)
 
-Examples:
-  key md5 -e -t hello
-  key md5 -b -t 5d41402abc4b2a76b9719d911017c592 -w example.txt
-  key md5 -b -t 5d41402abc4b2a76b9719d911017c592 -r 13
+EXAMPLES:
+  key sha512 -e -t hello
+  key sha512 -b -t 59e1748777448c69de6b800d7a33bbfb9ff1b463e44354c3553bcdb9c666fa90125a3c79f90397bdf5f6a13de828684f -w example.txt
+  key sha512 -b -t 59e1748777448c69de6b800d7a33bbfb9ff1b463e44354c3553bcdb9c666fa90125a3c79f90397bdf5f6a13de828684f -r 13
 """
 
 # decode function [!] Each Cipher Must Have This <---------- [!]
@@ -42,15 +41,15 @@ def encode(args):
 
         # Detect Salt
         if salt:
-            rawresult = hashlib.md5( salt.encode('ascii') +
+            rawresult = hashlib.sha512( salt.encode('ascii') +
                                  text.encode('ascii')  ).digest()
             output += f'Salt | {salt}'
         else:
-            rawresult = hashlib.md5( text.encode('ascii')  ).digest()
+            rawresult = hashlib.sha512( text.encode('ascii')  ).digest()
 
         result = rawresult.hex()
 
-        output += f"\nMD5 Raw Sum | {rawresult}\nMD5 Sum | {result}"
+        output += f"\nSHA512 Raw Sum | {rawresult}\nSHA512 Sum | {result}"
 
         # Output content as string for main.py to print
         # Pass True if Success Message
@@ -81,11 +80,11 @@ def brute(args):
         print()
         for i, word in enumerate(wordlist):
             print(f'Checking {i + 1}/{length}', end='\r')
-            guess = hashlib.md5( word.encode('ascii') ).hexdigest()
+            guess = hashlib.sha512( word.encode('ascii') ).hexdigest()
             if guess.lower() == text.lower():
-                output += f'\nDecoded MD5 | {word}'
+                output += f'\nDecoded SHA512 | {word}'
                 return [output, True]
-            continue
+            continuear
         print()
 
         output = "Not found in wordlist"
@@ -109,13 +108,13 @@ def brute(args):
             i += 1
             guess = "".join(item)
             print(f'Attempt {i} -- {guess}', end='\r')
-            result = hashlib.md5( guess.encode('ascii') ).hexdigest()
+            result = hashlib.sha512( guess.encode('ascii') ).hexdigest()
 
             if result.lower() == text.lower():
-                return [f'Decoded MD5 | {guess}', True]
+                return [f'Decoded SHA512 | {guess}', True]
         print()
 
-        return [f'Did not decode md5 with max range of {range_}', False]
+        return [f'Did not decode SHA512 with max range of {range_}', False]
 
 
     # Pass False if Fail Message
@@ -125,4 +124,5 @@ def brute(args):
         return [f'"{text}" is not a valid input for -t', False]
 
     return ['Unknown error', False]
+
 

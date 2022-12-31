@@ -5,25 +5,24 @@
 
 # help menu for cipheringing process
 help_menu = """
-+---------------------------------------------------------+
-|  [+] ARGUMENTS Caesar-Cipher                            |
-|  [+] ARG 1. Ciphering Process                           |
-|          [-e] ---------- Encrypt                        |
-|          [-d] ---------- Decrypt                        |
-|          [-b] ---------- Brute Force                    |
-+---------------------------------------------------------+
-|  [+] ARG 2. Additional Aruments                         |
-|          [-k <int key>] ----------- Key                 |
-|              [not required for bruteforcing '-b']       |
-|          [-r <start,finish>] ------ Range               |
-|          [-t <plaintext>] --------- Input Text          |
-|          [-i <input file>] -------- Input File [.txt]   |
-|          [-o <output file>] ------- Output File         |
-|          [-e <plaintext>] --------- Custom exclude list |
-+---------------------------------------------------------+  
-|  [+] Example:                                           |
-|          cryptex cc -e -k 5 -t hello -ex "asd[]"        |
-+---------------------------------------------------------+
+USAGE:
+  key cc [FLAGS] [OPTIONS]
+
+FLAGS:
+  -b, --brute   Brute force the caesar cipher
+  -d, --decode  Decrypt input text or file
+  -e, --encode  Encrypt input text or file
+
+OPTIONS:
+  -ex, --exclude <exclude list>  Custom exclude list for brute forcing
+  -i, --inputFile <input file>   Input file to encrypt or decrypt
+  -k, --key <key>                Key for encoding or decoding (not required for brute forcing)
+  -o, --output <output file>     Output file for encrypted or decrypted text
+  -r, --range <range>            Range for brute forcing (start,finish)
+  -t, --text <text>              Input text to encrypt or decrypt
+
+EXAMPLES:
+  key cc -e -k 5 -t hello -ex "asd[]"
 """
 
 # encodes caesar

@@ -5,20 +5,20 @@
 
 # help menu for cipheringing process
 help_menu = """
-+-------------------------------------------------------+
-|  [+] ARGUMENTS Phonetic Alphabet                      |
-|  [+] ARG 1. Process                                   |
-|          [-e] ---------- Encrypt                      |
-|          [-d] ---------- Decrypt                      |
-+-------------------------------------------------------+
-|  [+] ARG 2. Additional Aruments                       |
-|          [-t <plaintext>] --------- Input Text        |
-|          [-i <input file>] -------- Input File [.txt] |
-|          [-o <output file>] ------- Output File       |
-+-------------------------------------------------------+ 
-|  [+] Example:                                         |
-|          cryptex pho -e -t hello                      |
-+-------------------------------------------------------+
+USAGE:
+  key pho [FLAGS] [OPTIONS]
+
+FLAGS:
+  -e, --encrypt     Encrypt the input text
+  -d, --decrypt     Decrypt the input text
+
+OPTIONS:
+  -t, --text <plaintext>         Input Text
+  -i, --inputFile <input file>   Input File [.txt]
+  -o, --output <output file>     Output File
+
+EXAMPLE:
+  key pho -e -t hello
 """
 
 # phonetic alphabet

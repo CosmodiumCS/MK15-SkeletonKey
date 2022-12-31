@@ -9,25 +9,30 @@ import mods.bits as b
 
 # help menu for cipheringing process
 help_menu = """
-+-----------------------------------------------------------+
-| [✓] ARG 2. Additional Aruments                            |
-|         [-p <target>] --- Payload                         |
-|             <web> ------------------- USB RubberDucky     |
-|             <mail> ------------------ Bash Bunny          |
-|             <wifi> ------------------ O.MG Cable          |
-|             <sam> ------------------- SAM Grabber         |
-|             <rw> -------------------- Custom Ransomware   |
-|             <pay> ------------------- Payload Encoder     |
-|         [-g <generation-method>] ---- Output File         |
-|             <rd> -------------------- USB RubberDucky     |
-|             <bb> -------------------- Bash Bunny          |
-|             <omg> ------------------- O.MG Cable          |
-|             <exe> ------------------- Portable Executable |
-|             <ps1> ------------------- PowerShell Script   |
-+-----------------------------------------------------------+
-| [✓] Example:                                              |
-|  cryptex cp -p web -g ps1                                 |
-+-----------------------------------------------------------+
+USAGE:
+  key cp [FLAGS] [OPTIONS]
+
+FLAGS:
+  -h, --help       Prints help information
+  -V, --version    Prints version information
+
+OPTIONS:
+  -g <generation-method>    Output file
+                            <rd> - USB RubberDucky
+                            <bb> - Bash Bunny
+                            <omg> - O.MG Cable
+                            <exe> - Portable Executable
+                            <ps1> - PowerShell Script
+  -p <target>              Payload
+                            <web> - USB RubberDucky
+                            <mail> - Bash Bunny
+                            <wifi> - O.MG Cable
+                            <sam> - SAM Grabber
+                            <rw> - Custom Ransomware
+                            <pay> - Payload Encoder
+
+EXAMPLES:
+  key cp -p web -g ps1
 """
 
 # get payload

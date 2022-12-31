@@ -5,16 +5,20 @@
 
 # help menu for ciphering process
 help_menu = """
-+-------------------------------------------------------+
-|  [+] ARGUMENTS Reverse Cipher                         |
-|  [+] ARG 2. Additional Aruments                       |                                       
-|          [-t <plaintext>] --------- Input Text        |
-|          [-i <input file>] -------- Input File [.txt] |
-|          [-o <output file>] ------- Output File       |
-+-------------------------------------------------------+
-|  [+] Example:                                         |
-|  cryptex rc -e -t hello                               |
-+-------------------------------------------------------+
+USAGE:
+  key rc [FLAGS] [OPTIONS]
+
+FLAGS:
+  -d, --decrypt  Decrypt input text or file
+  -e, --encrypt  Encrypt input text or file
+
+OPTIONS:
+  -i, --inputFile <input file>   Input file to encrypt or decrypt
+  -o, --output <output file>     Output file for encrypted or decrypted text
+  -t, --text <text>              Input text to encrypt or decrypt
+
+EXAMPLES:
+  key rc -e -t "hello"
 """
 
 # encode reverse

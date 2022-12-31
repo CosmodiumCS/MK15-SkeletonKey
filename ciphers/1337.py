@@ -5,20 +5,20 @@
 
 # help menu for cipheringing process
 help_menu = """
-+------------------------------------------------------+
-| [+] ARGUMENTS L33T 5P34K                             |
-| [+] ARG 1. Process                                   |
-|         [-e] ---------- Encrypt                      |
-|         [-d] ---------- Decrypt                      |      
-+------------------------------------------------------+                                             
-| [+] ARG 2. Additional Aruments                       |
-|         [-t <plaintext>] --------- Input Text        | 
-|         [-i <input file>] -------- Input File [.txt] |
-|         [-o <output file>] ------- Output File       |
-+------------------------------------------------------+
-| [+] Example:                                         |
-|         cryptex l33t -e -t hello                     |
-+------------------------------------------------------+
+USAGE:
+  key 1337 [FLAGS] [OPTIONS]
+
+FLAGS:
+  -d, --decode  Decrypt input text or file
+  -e, --encode  Encrypt input text or file
+
+OPTIONS:
+  -i, --inputFile <input file>   Input file to encrypt or decrypt
+  -o, --output <output file>     Output file for encrypted or decrypted text
+  -t, --text <text>              Input text to encode or decode
+
+EXAMPLES:
+  key 1337 -e -t hello
 """
 
 # leet chr

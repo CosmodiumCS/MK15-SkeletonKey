@@ -3,3 +3,6 @@ Cryptography
 googletrans==3.1.0a0
 colorama
 Pillow
+twofish
+blowfish
+numpy

@@ -6,26 +6,24 @@ from googletrans import Translator, LANGUAGES
 
 # help menu for cipheringing process
 help_menu = """
-+----------------------------------------------------------+
-| [✓] ARGUMENTS Google Translate                           |
-|  [+] ARG 1. Ciphering Process                            |
-|          [-tr] ---------- Translate                      |
-|          [-b] ----------- Brute Force                    |
-|          [-lang] -------- List languags                  |
-+----------------------------------------------------------+
-| [✓] ARG 2. Additional Aruments                           |
-|         [-t <plaintext>] ------------ Input Text         |
-|         [-src <language>] ----------  Src Language       |
-|              [not required for bruteforcing '-b']        |
-|         [-dest <language>] ---------- Dest Language      |
-|              [not required for bruteforcing '-b']        |
-|         [-i <input file>] ----------- Input File [.txt]  |
-|         [-o <output file>] ---------- Output File        |
-+----------------------------------------------------------+
-| [✓] Example:                                             |
-|  cryptex translate -tr -t "Hei"                          |
-|  cryptex translate -b -t "こんにちは"                    |
-+----------------------------------------------------------+
+USAGE:
+  key translate [FLAGS] [OPTIONS]
+
+FLAGS:
+  -b, --brute           bruteforce translations
+  -lang, --list-langs   list available languages
+  -tr, --translate      translate text
+
+OPTIONS:
+  -dest <language>      destination language
+  -i <input file>       input file [.txt]
+  -o <output file>      output file
+  -src <language>       source language
+  -t <plaintext>        input text
+
+EXAMPLES:
+    key translate -tr -t "Hei"
+    key translate -b -t "こんにちは"
 """
 
 # decode function [!] Each Cipher Must Have This <---------- [!]

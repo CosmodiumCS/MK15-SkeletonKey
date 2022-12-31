@@ -7,20 +7,20 @@ import base64
 
 # help menu for cipheringing process
 help_menu = """
-+-------------------------------------------------------+
-|  [+] ARGUMENTS Base64                                 |
-|  [+] ARG 1. Process                                   |
-|          [-e] ---------- Encrypt                      |
-|          [-d] ---------- Decrypt                      |
-+-------------------------------------------------------+
-|  [+] ARG 2. Additional Aruments                       |
-|          [-t <plaintext>] --------- Input Text        |
-|          [-i <input file>] -------- Input File [.txt] |
-|          [-o <output file>] ------- Output File       |
-+-------------------------------------------------------+ 
-|  [+] Example:                                         |
-|          cryptex b64 -e -t "hello"                    |
-+-------------------------------------------------------+
+USAGE:
+  key b64 [FLAGS] [OPTIONS]
+
+FLAGS:
+  -d, --decode  Decrypt input text or file
+  -e, --encode  Encrypt input text or file
+
+OPTIONS:
+  -i, --inputFile <input file>   Input file to encrypt or decrypt
+  -o, --output <output file>     Output file for encrypted or decrypted text
+  -t, --text <text>              Input text to encrypt or decrypt
+
+EXAMPLES:
+  key b64 -e -t "hello"
 """
 
 # encode base64
