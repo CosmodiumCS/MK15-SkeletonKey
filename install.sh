@@ -130,6 +130,8 @@ if [[ "$distro" == "Debian" ]] || [[ "$distro" == "Parrot" ]] || [[ "$distro" ==
     pip install colorama
     pip install pillow
     pip install numpy
+    pip install twofish
+    pip install blowfish
     echo -e "${green}[+] Completed${reset}"
 
 elif [[ "$distro" == "Void" ]]; then
@@ -141,6 +143,10 @@ elif [[ "$distro" == "Void" ]]; then
     pip install Cryptography
     pip install googletrans==3.1.0a0
     pip install colorama
+    pip install pillow
+    pip install numpy
+    pip install twofish
+    pip install blowfish
     echo -e "${green}[+] Completed${reset}"
 
 elif [[ "$distro" = "Arch" ]]; then
@@ -153,6 +159,10 @@ elif [[ "$distro" = "Arch" ]]; then
     python3 -m pip install Cryptography
     python3 -m pip install googletrans==3.1.0a0
     python3 -m pip install colorama
+    python3 -m pip install pillow
+    python3 -m pip install numpy
+    python3 -m pip install twofish
+    python3 -m pip install blowfish
     echo -e "${green}[+] Completed${reset}"
 
 else
