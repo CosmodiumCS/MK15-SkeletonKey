@@ -33,7 +33,7 @@ def update():
     print("\n[*] Checking for updates...")
 
     # get latest version nubmer
-    os.system("curl https://raw.githubusercontent.com/AlexKollar/SkeletonKey/master/version.txt | tee ~/.SkeletonKey/latest.txt")
+    os.system("curl https://raw.githubusercontent.com/CosmodiumCS/SkeletonKey/main/version.txt| tee ~/.SkeletonKey/latest.txt")
 
     # save version nubmers to memory
     current_version = float(open(f"{b.local_path}/version.txt", "r").read())
@@ -271,7 +271,7 @@ def cli(args_exist):
             elif user_input.split(' ')[0] not in get_ciphers():
                 os.system(user_input)
 
-            # runs crytpex libraries
+            # runs skeletonkey libraries
             else:
                 os.system(f'python3 ~/.SkeletonKey/main.py {user_input.replace("key", "")}')
 
