@@ -12,6 +12,7 @@ import readline
 import sys
 import os
 from colorama import Fore, Back, Style
+import string
 
 
 # gets list of available ciphers
@@ -150,7 +151,12 @@ def cli(args_exist):
             parser.add_argument('-ex', '--exclude', help='Exclude Character\n', dest='exclude', type=str)
             parser.add_argument('-w', '--wordlist', help='Wordlist File\n', dest='wordlist', type=str)
             parser.add_argument('-r', '--range', help='Range\n', dest='range', type=str)
-            # Layerd Encryption
+            # code transcripts
+            parser.add_argument('-words', '--words', help='Filter out words\n', action='store_true')
+            parser.add_argument('-lingo', '--lingo', help='Specify language ("lingo")', type=str, default='en_US')
+            # parser.add_argument('-a', '--alphabet', help='Specify custom alphabet\n', type=str, default=string.ascii_uppercase)
+            # parser.add_argument('-a', '--alphabet', help='Specify custom alphabet\n', type=str)
+            # Layered Encryption
             parser.add_argument('-lay', '--layerd', dest='layerd', action='store_true')
             # Google Translate
             parser.add_argument('-tr', '--translate', dest='translate', action='store_true')
