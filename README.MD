@@ -4,7 +4,7 @@
 [onlyrat]: https://github.com/CosmodiumCS/OnlyRAT
 
 <!-- title -->
-# SkeletonKey V1.1
+# SkeletonKey:
 
 > A Cryptographic Suite Created by The CosmodiumCS Development Team
 ---
