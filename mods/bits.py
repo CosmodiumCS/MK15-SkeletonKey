@@ -29,6 +29,7 @@ help_menu = Fore.CYAN + """
 │       [vc] ───────── Vingenere Cipher                       │
 │       [rc] ───────── Reverse Cipher                         │
 │       [mc] ───────── Multiplicative Cipher                  │
+│       [ct] ───────── Code Transcript                        │
 │       [xor] ──────── XOR Cipher                             │
 │       [r13] ──────── ROT 13 Encoding                        │
 │       [r47] ──────── ROT 47 Encoding                        │
