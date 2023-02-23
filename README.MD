@@ -9,17 +9,6 @@
 > A Cryptographic Suite Created by The CosmodiumCS Development Team
 ---
 
-## Update 1.2:
-- Code Transcript Cracking
-- Salt and Raw Hash Function to MD5
-- SHA1 to SHA512 Hashes
-- Blake2b and Blake2s Hashes
-- Twofish Encryption
-- Blowfish Encryption
-- Updated Pixel Encoding
-- Monoalphabetic Cipher
-- URL Encoding
-
 ## Overview:
 SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium CyberSecurity][ccs] (with an original joint development with SSG). It was originally refereed to as "[The Codex Project](https://github.com/CosmodiumCS/the-codex-project)", and later "Cryptex" after a joint development. After a group conflict, the CCS developers left the group to create "SkeletonKey", which aims to become a leading cryptographic hacking suite. SkeletonKey is capable of advanced encryption, decryption, and breaking ciphers through various methods. These methods include but are not limited to brute-forcing, cryptographic word-listing, letter frequencies, plaintext formatting, and cracking.
 
@@ -30,8 +19,8 @@ SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium Cyber
 - [Earth Invader](https://github.com/Soulsender/Earth-Invader) (SkeletonKey Discord Bot)
 
 ## Requirements:
-- Linux OS (Debian/Void/Arch)
-- Python 3.x
+- Linux (see `install.sh --help`)
+- Either Bash or Zsh
 
 ## Installation:
 1. Clone repository
