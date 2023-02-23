@@ -73,36 +73,68 @@ function alias_workflow {
 
     # clean up
     echo -e "${green}[+] Installation Successful"
-    echo -e "[+] Please Restart your terminal"
-    echo -e "[+] type 'key' launch SkeletonKey${reset}"
-    bash
+    echo -e "[+] You might have to restart your terminal"
+    echo -e "[+] Type 'key' in a new terminal to launch SkeletonKey${reset}"
+}
+
+function debian_install {
+    sudo apt update
+    sudo apt-get install -y python3 python3-pip python-dev
+}
+
+function void_install {
+    sudo xbps-install -Sy python3 python3-pip python3-devel
+}
+
+function arch_install {
+    sudo pacman -Sy python python-pip python-setuptools
+}
+
+function python_install {
+    pip install qrcode
+    pip install Cryptography
+    pip install googletrans==3.1.0a0
+    pip install colorama
+    pip install pillow
+	pip install pyenchant
+    pip install numpy
 }
 
 # check if run with sudo
-if [ "$EUID" -ne 0 ]; then
-    continue
-else
-    echo -e "${red}Do not run as root. The script will prompt you for root access.${reset}"
-    exit 0
+if [ "$EUID" -eq 0 ]; then
+    echo -e "${red}[!] Do not run as root. ${reset}The installation script will prompt you for root access."
+    exit 1
 fi
+
 
 # arguments
 while [ -n "$1" ]
 do
 case "$1" in
 --help) 
-  echo "
+  echo -e "
         SUPPORTED DISTROS:
-        - Debian
+        ${red}- Debian
             - Parrot
             - Ubuntu
             - Kali
             - Mint
-        - Arch
-        - Void
+            - Elementary OS
+            - Zorin
+            - MX
+            - Pop
+            - Deepin ${reset}
+        ${blue}- Arch
+            - Manjaro
+            - Garuda
+            - Artix
+            - EndeavourOS
+            - ArcoLinux
+            - RebornOS ${reset}
+        ${green}- Void ${reset}
 
-        Please see the SkeletonKey README for more infomation:
-        https://github.com/CosmodiumCS/SkeletonKey
+        Please see the SkeletonKey README for more infomation about unsupported distros:
+        ${blue}https://github.com/CosmodiumCS/SkeletonKey${reset}
   "
   exit 0
 ;;
@@ -115,51 +147,46 @@ esac
 shift
 done
 
-# check for valid distro (Parrot, Ubuntu, Void, Debian, Arch)
-distro=`sudo cat /etc/issue | awk '{print $1;}'`
+# get distro
+distro=$(lsb_release -i | cut -f 2-)
 
-if [[ "$distro" == "Debian" ]] || [[ "$distro" == "Parrot" ]] || [[ "$distro" == "Ubuntu" ]] || [[ "$distro" == "Linux" ]] || [[ "$distro" == "Kali" ]]; then
+# list of valid distros
+debian_systems=("Ubuntu" "Debian" "Linuxmint" "Kali" "Parrot" "elementary OS" "MX" "Zorin" "Pop" "Deepin")
+arch_systems=("Arch Linux" "Manjaro Linux" "Garuda" "Artix")
+
+if [[ " ${debian_systems[*]} " == *"$distro"* ]]; then
     # installing tools for debian
-    echo -e "${red}Debian${reset} system detected."
+    echo -e "${red}$distro${reset} system detected."
     echo -e "${blue}[*] Installing tools...${reset}"
-    sudo apt update
-    sudo apt-get install -y python3 python3-pip python-dev
-    pip install qrcode
-    pip install Cryptography
-    pip install googletrans==3.1.0a0
-    pip install colorama
-    pip install pillow
-	pip install pyenchant
-    pip install numpy
+    debian_install
+    python_install
+    echo -e "${green}[+] Completed${reset}"
+
+elif [[ " ${arch_systems[*]} " == *"$distro"* ]]; then
+    # installing tools for arch
+    echo -e "${blue}Arch${reset} system detected."
+    echo -e "${blue}[*] Installing tools...${reset}"
+    arch_install
+    python_install
     echo -e "${green}[+] Completed${reset}"
 
 elif [[ "$distro" == "Void" ]]; then
     # installing tools for void
-    echo -e "${green}Void${reset} system detected."
+    echo -e "${green}$distro${reset} system detected."
     echo -e "${blue}[*] Installing tools...${reset}"
-    sudo xbps-install -S python3
-    pip install qrcode
-    pip install Cryptography
-    pip install googletrans==3.1.0a0
-    pip install colorama
-    echo -e "${green}[+] Completed${reset}"
-
-elif [[ "$distro" = "Arch" ]]; then
-    # installing tools for arch
-    echo -e "${blue}Arch${reset} system detected."
-    echo -e "${blue}[*] Installing tools...${reset}"
-    sudo pacman -Syu
-    sudo pacman -S python python-pip
-    python3 -m pip install qrcode
-    python3 -m pip install Cryptography
-    python3 -m pip install googletrans==3.1.0a0
-    python3 -m pip install colorama
+    void_install
+    python_install
     echo -e "${green}[+] Completed${reset}"
 
 else
-    echo -e "${red}[!] Unknown distro, please see documentation for unknown distros.${reset}"
+    echo -e "${red}[!] Unknown distro: \"$distro\", please see documentation for unknown distros.${reset}"
     exit 0
 fi
+
+# install lsb_release command because arch and void are quirky and don't want to have it by default even though it's literally like 1mb
+sudo pacman -Sy --noconfirm lsb-release > /dev/null
+sudo xbps-install -y lsb-release > /dev/null
+sudo apt install -y lsb-release > /dev/null
 
 # call alias workflow
 alias_workflow
