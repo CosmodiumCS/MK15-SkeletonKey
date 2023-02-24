@@ -154,7 +154,7 @@ def cli(args_exist):
             # code transcripts
             parser.add_argument('-words', '--words', help='Filter out words\n', action='store_true')
             parser.add_argument('-lingo', '--lingo', help='Specify language ("lingo")', type=str, default='en_US')
-            # parser.add_argument('-a', '--alphabet', help='Specify custom alphabet\n', type=str, default=string.ascii_uppercase)
+            parser.add_argument('-a', '--alphabet', help='Specify custom alphabet\n', type=str, default=string.ascii_uppercase)
             # parser.add_argument('-a', '--alphabet', help='Specify custom alphabet\n', type=str)
             # Layered Encryption
             parser.add_argument('-lay', '--layerd', dest='layerd', action='store_true')

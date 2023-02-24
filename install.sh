@@ -158,8 +158,8 @@ arch_systems=("Arch Linux" "Manjaro Linux" "Garuda" "Artix")
 if [[ " ${debian_systems[*]} " == *"$distro"* ]]; then
     # installing tools for debian
     echo -e "${red}$distro${reset} system detected."
-	echo -e "${blue}[~] Enter sudo prompt : ${reset}"
     echo -e "${blue}[*] Installing tools...${reset}"
+	echo -e "${blue}[~] Enter sudo prompt : ${reset}"
     debian_install
     python_install
     echo -e "${green}[+] Completed${reset}"
