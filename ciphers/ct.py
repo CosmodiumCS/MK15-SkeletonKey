@@ -12,7 +12,7 @@ USAGE:
   key ct [FLAGS] [OPTIONS]
 
 FLAGS:
-  -b, --bruteforce   Encrypt input text or file
+  -b, --bruteforce   Bruteforce input text or file
 
 OPTIONS:
   -i, --inputFile <input file>   Input file to encrypt or decrypt
@@ -23,6 +23,9 @@ OPTIONS:
   -lingo, --lingo <dictionary>   Set language for words to pull out [default "en_US"]
 
 NOTES:
+  This program can get very memory intensive and crash your
+  computer, so keep the transcripts short :)
+
   lowercase text can be used to escape the code transcript
   so if we knew the first two letters were "b" and "a", we
   could filter as such:
