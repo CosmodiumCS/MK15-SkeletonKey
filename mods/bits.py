@@ -7,7 +7,6 @@ from colorama import Fore, Back, Style
 # Variables
 username = getpass.getuser() # Get username
 header = Fore.RED + f'{username}' + Fore.WHITE + '@' + Fore.RED + 'SkeletonKey $ ' + Fore.RESET # header for user input
-remote_path = 'raw.githubusercontent.com/AlexKollar/Cryptex/master' # remote url path
 local_path = f'/home/{username}/.SkeletonKey' if username != 'root' else '/root/.SkeletonKey' # local path to skelkey
 cipher = f'{local_path}/ciphers/' # local path to ciphers
 

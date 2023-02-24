@@ -16,7 +16,7 @@ SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium Cyber
 - [YouTube Video](https://www.cosmodiumcs.com/comings-soon)
 - [YouTube Channel](https://youtube.com/cosmodiumcs)
 - [Website](https://cosmodiumcs.com)
-- [Earth Invader](https://github.com/Soulsender/Earth-Invader) (SkeletonKey Discord Bot)
+- [Earth Invader](https://github.com/CosmodiumCS/Earth-Invader) (SkeletonKey Discord Bot)
 
 ## Requirements:
 - Linux (see `install.sh --help`)
@@ -105,7 +105,7 @@ key
 ```
 
 ## Earth Invader Discord Bot:
-The Earth Invader bot is a Discord API extension of SkeletonKey, bringing the same cryptography tools to Discord as if it was your own cryptography console! Check it out [here](https://github.com/Soulsender/Earth-Invader).
+The Earth Invader bot is a Discord API extension of SkeletonKey, bringing the same cryptography tools to Discord as if it was your own cryptography console! Check it out [here](https://github.com/CosmodiumCS/Earth-Invader).
 
 ## FAQ:
 **What Linux distributions are supported?**
