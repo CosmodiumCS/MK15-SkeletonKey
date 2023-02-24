@@ -23,13 +23,17 @@ banner = Fore.RED + f'''
 
 help_menu = Fore.CYAN + """
 ┌─────────────────────────────────────────────────────────────┐
-│ [■] EXAMPLE: key cc -d -t 'This is a string to encrypt'     │
+│ [■] EXAMPLE: key cc -d -t "Encrypt Me" -k 5                 │
+│                                                             │
 │ [■] ARG 1. Cipher                                           │
 │       [cc] ───────── Caesar Cipher                          │
 │       [vc] ───────── Vingenere Cipher                       │
 │       [rc] ───────── Reverse Cipher                         │
 │       [mc] ───────── Multiplicative Cipher                  │
 │       [ct] ───────── Code Transcript                        │
+│       [se] ───────── Static Encryption                      │
+│       [mo] ───────── Monoalphabetic Cipher                  │
+│       [url] ──────── URL Encoding                           │
 │       [xor] ──────── XOR Cipher                             │
 │       [r13] ──────── ROT 13 Encoding                        │
 │       [r47] ──────── ROT 47 Encoding                        │
@@ -40,10 +44,9 @@ help_menu = Fore.CYAN + """
 │       [oct] ──────── Octal Encoding                         │
 │       [mor] ──────── Morse Code Cipher                      │
 │       [pho] ──────── Phonetic Alphabet Cipher               │
+│       [md5] ──────── MD5 Hash                               │
 │       [1337] ─────── L33T 5P34K Encoding                    │
 │       [menc] ─────── MENC Encoding                          │
-│       [translate] ── Google Translate API                   │
-│       [md5] ──────── MD5 Hash                               │
 │       [sha1] ─────── SHA1 Hash                              │
 │       [sha224] ───── SHA224 Hash                            │
 │       [sha384] ───── SHA384 Hash                            │
@@ -52,14 +55,13 @@ help_menu = Fore.CYAN + """
 │       [blake2s] ──── Blake2s Hash                           │
 │       [twofish] ──── Twofish Encryption                     │
 │       [blowfish] ─── Blowfish Encryption                    │
-│       [se] ───────── Static Encryption                      │
-│       [url] ──────── URL Encoding                           │
-│       [mo] ───────── Monoalphabetic Cipher                  │
+│       [translate] ── Google Translate API                   │
 ├─────────────────────────────────────────────────────────────┤
-│ [■] ARG 2. Cipher Method                                    │
+│ [■] ARG 2. Ciphering Method                                 │
 │       [-e] ────────── Encrypt/Encode                        │
 │       [-d] ────────── Decrypt/Decode                        │
 │       [-b] ────────── Break/Brute Force                     │
+│                                                             │
 │ [■] Google Translate API                                    │
 │       [-tr] ───────── Translate                             │
 │       [-lang] ─────── List Languages                        │
@@ -70,11 +72,14 @@ help_menu = Fore.CYAN + """
 │       [-o] ────────── Output File                           │
 │       [-k] ────────── Encryption Key                        │
 │       [-s] ────────── Hash Salt                             │
-│       [-md] ───────── Encryption Mode                       │
 │       [-r] ────────── Range                                 │
 │       [-w] ────────── Wordlist                              │
+│       [-a] ────────── Custom Alphabet                       │
+│       [-md] ───────── Encryption Mode                       │
 │       [-src] ──────── Source Language                       │
 │       [-dest] ─────── Destination Language                  │
+│       [-lingo] ────── Set Language ["en_US" Default]        │
+│       [-words] ────── Pull Words From Output                │
 ├─────────────────────────────────────────────────────────────┤
 │ [■] SkeletonKey Arguments                                   │
 │       [--help] ────── help                                  │
