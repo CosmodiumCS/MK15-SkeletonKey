@@ -51,19 +51,20 @@ function alias_workflow {
     # check if it already exists in bashrc
     if ! cat ~/.bashrc | grep "SkeletonKey_PATH" > /dev/null; then
         # Do it in one command instead of repeating yourself.
-        echo "
-        export SkeletonKey_PATH=\"~/.SkeletonKey\"
-        alias key=\"python3 ~/.SkeletonKey/main.py\"
-        " >> ~/.bashrc
+        echo "export SkeletonKey_PATH=\"~/.SkeletonKey\"\nalias key=\"python3 ~/.SkeletonKey/main.py\"" >> ~/.bashrc
     fi
 
     #check if it already exists in zshrc
     if ! cat ~/.zshrc | grep "SkeletonKey_PATH" > /dev/null; then
         # Do it in one command instead of repeating yourself.
-        echo "
-        export SkeletonKey_PATH=\"~/.SkeletonKey\"
-        alias key=\"python3 ~/.SkeletonKey/main.py\"
+        echo "export SkeletonKey_PATH=\"~/.SkeletonKey\"\nalias key=\"python3 ~/.SkeletonKey/main.py\"
         " >> ~/.zshrc
+    fi
+	
+	# check if it already exists in xonshrx
+    if ! cat ~/.xonshrc | grep "~/.SkeletonKey/main.py" > /dev/null; then
+        # Do it in one command instead of repeating yourself.
+        echo "aliases[\"key\"] = [\"python3\", \"~/.SkeletonKey/main.py\"]" >> ~/.xonshrc
     fi
 
     echo -e "${green}[+] Completed${reset}"
