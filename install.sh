@@ -181,7 +181,7 @@ if [[ " ${debian_systems[*]} " == *"$distro"* ]]; then
 
 elif [[ " ${arch_systems[*]} " == *"$distro"* ]]; then
     # installing tools for arch
-    echo -e "${blue}Arch${reset} system detected."
+    echo -e "${blue}[*] ${blue}Arch${reset} system detected."
     echo -e "${blue}[*] Installing tools...${reset}"
     arch_install
     python_install
