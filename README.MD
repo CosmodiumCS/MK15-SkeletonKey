@@ -23,18 +23,23 @@ SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium Cyber
 - Either Bash or Zsh
 
 ## Installation:
+
+### Supported Distros
 1. Clone repository
 ```bash
 git clone https://github.com/CosmodiumCS/SkeletonKey
 ```
 2. Execute installer
-> **YES** the SkeletonKey directory **IS** supposed to disappear
+> **YES** the SkeletonKey directory **IS** supposed to disappear. It is actually being moved to `~/.SkeletonKey`.
 ```bash
 cd SkeletonKey
 chmod +x
 ./install.sh
 ```
 3. Restart your terminal
+
+## Unsupported Distros & Shells
+See the [wiki](https://github.com/CosmodiumCS/SkeletonKey/wiki#installation).
 
 ## Running SkeletonKey:
 Run the following for help
@@ -107,25 +112,6 @@ key
 ## Earth Invader Discord Bot:
 The Earth Invader bot is a Discord API extension of SkeletonKey, bringing the same cryptography tools to Discord as if it was your own cryptography console! Check it out [here](https://github.com/Soulsender/Earth-Invader).
 
-## FAQ:
-**What Linux distributions are supported?**
-- Debian (debian-based)
-	- Kali
-	- Parrot
-	- Ubuntu
-	- Mint
-- Arch
-- Void
-> See `--help` on `install.sh`.
-
-**What Linux distributions are not supported?**
-- With any unsupported distributions, you can use `--unsupported-distro` on `install.sh`.
-- In addition, you will need to install:
-	- **System Packages**:
-		- Python3
-		- Python Pip
-	- P**ython Packages**:
-		- After installing python pip, use `pip3 install -r requirements.txt`
 
 ## Original Devs:
 - Blue Cosmo
