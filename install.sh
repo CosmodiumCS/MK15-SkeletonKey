@@ -55,13 +55,19 @@ function alias_workflow {
         export SkeletonKey_PATH=\"~/.SkeletonKey\"
         alias key=\"python3 ~/.SkeletonKey/main.py\"
         " >> ~/.bashrc
+    fi
+
     #check if it already exists in zshrc
     elif ! cat ~/.zshrc | grep "SkeletonKey_PATH" > /dev/null; then
         # Do it in one command instead of repeating yourself.
-        echo "
-        export SkeletonKey_PATH=\"~/.SkeletonKey\"
-        alias key=\"python3 ~/.SkeletonKey/main.py\"
+        echo "export SkeletonKey_PATH=\"~/.SkeletonKey\"\nalias key=\"python3 ~/.SkeletonKey/main.py\"
         " >> ~/.zshrc
+    fi
+	
+	# check if it already exists in xonshrx
+    if ! cat ~/.xonshrc | grep "~/.SkeletonKey/main.py" > /dev/null; then
+        # Do it in one command instead of repeating yourself.
+        echo "aliases[\"key\"] = [\"python3\", \"~/.SkeletonKey/main.py\"]" >> ~/.xonshrc
     fi
 
     echo -e "${green}[+] Completed${reset}"
@@ -168,13 +174,14 @@ if [[ " ${debian_systems[*]} " == *"$distro"* ]]; then
     # installing tools for debian
     echo -e "${blue}[*] ${red}$distro${reset} system detected."
     echo -e "${blue}[*] Installing tools...${reset}"
+	echo -e "${blue}[~] Enter sudo prompt : ${reset}"
     debian_install
     python_install
     echo -e "${green}[+] Completed${reset}"
 
 elif [[ " ${arch_systems[*]} " == *"$distro"* ]]; then
     # installing tools for arch
-    echo -e "${blue}[*] ${blue}$distro${reset} system detected."
+    echo -e "${blue}Arch${reset} system detected."
     echo -e "${blue}[*] Installing tools...${reset}"
     arch_install
     python_install

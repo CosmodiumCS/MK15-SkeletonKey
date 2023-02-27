@@ -12,16 +12,20 @@ USAGE:
   key ct [FLAGS] [OPTIONS]
 
 FLAGS:
-  -b, --bruteforce   Encrypt input text or file
+  -b, --bruteforce   Bruteforce input text or file
 
 OPTIONS:
   -i, --inputFile <input file>   Input file to encrypt or decrypt
   -o, --output <output file>     Output file for encrypted or decrypted text
   -t, --text <text>              Input text to encrypt or decrypt
-  -lingo, --lingo <dictionary>   Set language for words to pull out 
+  -a, --alphabet "<letters>"     Use a custom alphabet ["A" will always be iterated through]
   -words, --words                Pull out words from decoded transcripts
+  -lingo, --lingo <dictionary>   Set language for words to pull out [default "en_US"]
 
 NOTES:
+  This program can get very memory intensive and crash your
+  computer, so keep the transcripts short :)
+
   lowercase text can be used to escape the code transcript
   so if we knew the first two letters were "b" and "a", we
   could filter as such:
@@ -30,7 +34,8 @@ NOTES:
 
 EXAMPLES:
   key ct -b -t "ABCC"
-  key ct -b -t "ABCC" -w -l "en_US"
+  key ct -b -t "ABCC" -words -l "en_US"
+  key ct -b -t "ABCC" -words -a "EFGH123"
 """
 
 # -a, --alphabet <sequence>      Input custom alphabet to iterate through # add me
@@ -70,8 +75,7 @@ def dictionary(transcripts, language):
     return output
 
 # brute force code transcript
-# def decode_transcripts(transcript_list, alphabet, count=1):
-def decode_transcripts(transcript_list, alphabet=string.ascii_uppercase, count=1):
+def decode_transcripts(transcript_list, alphabet, custom_alphabet, count=1):
     output_transcripts = []
     global TRANSCRIPT_SET
     global TRANSCRIPT
@@ -88,7 +92,7 @@ def decode_transcripts(transcript_list, alphabet=string.ascii_uppercase, count=1
 
         # get characters that are shared in both transcripts
         for character in (TRANSCRIPT_SET & transcript_set):
-
+                
             for letter in (alphabet):
             # for letter in alphabet:
                 # ignore repeated characters
@@ -98,7 +102,7 @@ def decode_transcripts(transcript_list, alphabet=string.ascii_uppercase, count=1
                     continue
                 if (len(transcript_set) > 1) and (letter in transcript_set):
                     continue
-
+               
                 plaintext = transcript.replace(character, letter)
                 output_transcripts.append(plaintext)
 
@@ -107,18 +111,24 @@ def decode_transcripts(transcript_list, alphabet=string.ascii_uppercase, count=1
     if count == len(TRANSCRIPT):
         return output
 
-    return decode_transcripts(output, alphabet, (count+1))
+    return decode_transcripts(output, alphabet, custom_alphabet, (count+1))
 
 # brute function [!] Optional Per Cipher <----------------- [!]
 def brute(args):
     # Getting text from all passed in args
-    # All other args can be grabbed the same way
-    # Example key = input.key | range = input.range
     text = args.text
     word = args.words
     lang = args.lingo 
-    # alphabet = args.alphabet
-    
+    alphabet = args.alphabet
+    custom_alphabet = False
+
+    # format alphabet
+    if 'A' not in alphabet:
+        alphabet = set(alphabet)
+        alphabet.add('A') 
+        alphabet = ''.join(alphabet)
+        custom_alphabet = True
+
     if text:
         # Run Decode
         output = f'Bruteforcing | {text}'
@@ -128,8 +138,7 @@ def brute(args):
         TRANSCRIPT_SET = set(text)
         TRANSCRIPT = text
 
-        # transcripts = decode_transcripts([text], alphabet)
-        transcripts = decode_transcripts([text])
+        transcripts = decode_transcripts([text], alphabet, custom_alphabet)
 
         # filter out words
         if word:
