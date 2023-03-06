@@ -51,11 +51,14 @@ function alias_workflow {
     # check if it already exists in bashrc
     if ! cat ~/.bashrc | grep "SkeletonKey_PATH" > /dev/null; then
         # Do it in one command instead of repeating yourself.
-        echo "export SkeletonKey_PATH=\"~/.SkeletonKey\"\nalias key=\"python3 ~/.SkeletonKey/main.py\"" >> ~/.bashrc
+        echo "
+        export SkeletonKey_PATH=\"~/.SkeletonKey\"
+        alias key=\"python3 ~/.SkeletonKey/main.py\"
+        " >> ~/.bashrc
     fi
 
     #check if it already exists in zshrc
-    if ! cat ~/.zshrc | grep "SkeletonKey_PATH" > /dev/null; then
+    elif ! cat ~/.zshrc | grep "SkeletonKey_PATH" > /dev/null; then
         # Do it in one command instead of repeating yourself.
         echo "export SkeletonKey_PATH=\"~/.SkeletonKey\"\nalias key=\"python3 ~/.SkeletonKey/main.py\"
         " >> ~/.zshrc
@@ -68,14 +71,6 @@ function alias_workflow {
     fi
 
     echo -e "${green}[+] Completed${reset}"
-
-    # call staging
-    staging
-
-    # clean up
-    echo -e "${green}[+] Installation Successful"
-    echo -e "[+] You might have to restart your terminal"
-    echo -e "[+] Type 'key' in a new terminal to launch SkeletonKey${reset}"
 }
 
 function debian_install {
@@ -92,13 +87,7 @@ function arch_install {
 }
 
 function python_install {
-    pip install qrcode
-    pip install Cryptography
-    pip install googletrans==3.1.0a0
-    pip install colorama
-    pip install pillow
-	pip install pyenchant
-    pip install numpy
+    pip install -r requirements.txt
 }
 
 # check if run with sudo
@@ -107,57 +96,83 @@ if [ "$EUID" -eq 0 ]; then
     exit 1
 fi
 
-
 # arguments
 while [ -n "$1" ]
 do
 case "$1" in
 --help) 
   echo -e "
-        SUPPORTED DISTROS:
-        ${red}- Debian
-            - Parrot
-            - Ubuntu
-            - Kali
-            - Mint
-            - Elementary OS
-            - Zorin
-            - MX
-            - Pop
-            - Deepin ${reset}
-        ${blue}- Arch
-            - Manjaro
-            - Garuda
-            - Artix
-            - EndeavourOS
-            - ArcoLinux
-            - RebornOS ${reset}
-        ${green}- Void ${reset}
+${green}SUPPORTED DISTROS:${reset}
+- Debian
+    - Raspbian (Raspberry Pi OS)
+    - Parrot
+    - Ubuntu
+    - Kali
+    - Mint
+    - Elementary OS
+    - Zorin
+    - MX
+    - Pop
+    - Deepin
+- Arch
+    - Manjaro
+    - Garuda
+    - Artix
+    - EndeavourOS
+    - ArcoLinux
+    - RebornOS
+- Void 
 
-        Please see the SkeletonKey README for more infomation about unsupported distros:
-        ${blue}https://github.com/CosmodiumCS/SkeletonKey${reset}
-  "
+${red}UNSUPPORTED DISTROS:${reset}
+see ./install.sh --unsupported-distro
+
+${green}SUPPORTED SHELLS:${reset}
+- bash
+- zsh
+
+${red}UNSUPPORTED SHELLS:${reset}
+see ./install.sh --unsupported-shell
+
+Please see the SkeletonKey README for more infomation about unsupported distros and shells:
+${blue}https://github.com/CosmodiumCS/SkeletonKey${reset}
+"
   exit 0
 ;;
 --unsupported-distro)
     # call alias workflow function
     alias_workflow
+    staging
+    exit 0
+;;
+--unsupported-shell)
+    # call alias workflow function
+    python_install
+    staging
+    echo -e ${blue}"Your run configs are:"${reset}
+    ls -a ~ | grep "rc"
+    echo -e "${red} Please enter this command, where \".rc\" is your shell run config:"${reset}
+    echo -e "echo \"export SkeletonKey_PATH=\"~/.SkeletonKey\" && alias key=\"python3 ~/.SkeletonKey/main.py\"\" >> ~/.rc"
     exit 0
 ;;
 esac
 shift
 done
 
+# install lsb_release command because arch and void are quirky and don't want to have it by default even though it's literally like 1mb
+sudo pacman -Sy --noconfirm lsb-release &>/dev/null
+sudo xbps-install -y lsb-release &>/dev/null
+sudo apt install -y lsb-release &>/dev/null
+
 # get distro
 distro=$(lsb_release -i | cut -f 2-)
 
 # list of valid distros
-debian_systems=("Ubuntu" "Debian" "Linuxmint" "Kali" "Parrot" "elementary OS" "MX" "Zorin" "Pop" "Deepin")
+debian_systems=("Ubuntu" "Debian" "Linuxmint" "Kali" "Parrot" "elementary OS" "MX" "Zorin" "Pop" "Deepin" "Raspbian" "Raspberry Pi Foundation")
 arch_systems=("Arch Linux" "Manjaro Linux" "Garuda" "Artix")
 
 if [[ " ${debian_systems[*]} " == *"$distro"* ]]; then
     # installing tools for debian
-    echo -e "${red}$distro${reset} system detected."
+    echo -e "${blue}[*] ${red}$distro${reset} system detected."
     echo -e "${blue}[*] Installing tools...${reset}"
 	echo -e "${blue}[~] Enter sudo prompt : ${reset}"
     debian_install
@@ -166,7 +181,7 @@ if [[ " ${debian_systems[*]} " == *"$distro"* ]]; then
 
 elif [[ " ${arch_systems[*]} " == *"$distro"* ]]; then
     # installing tools for arch
-    echo -e "${blue}$distro${reset} system detected."
+    echo -e "${blue}[*] ${blue}Arch${reset} system detected."
     echo -e "${blue}[*] Installing tools...${reset}"
     arch_install
     python_install
@@ -174,7 +189,7 @@ elif [[ " ${arch_systems[*]} " == *"$distro"* ]]; then
 
 elif [[ "$distro" == "Void" ]]; then
     # installing tools for void
-    echo -e "${green}$distro${reset} system detected."
+    echo -e "${blue}[*] ${green}$distro${reset} system detected."
     echo -e "${blue}[*] Installing tools...${reset}"
     void_install
     python_install
@@ -182,13 +197,17 @@ elif [[ "$distro" == "Void" ]]; then
 
 else
     echo -e "${red}[!] Unknown distro: \"$distro\", please see documentation for unknown distros.${reset}"
-    exit 0
+    exit 1
 fi
-
-# install lsb_release command because arch and void are quirky and don't want to have it by default even though it's literally like 1mb
-sudo pacman -Sy --noconfirm lsb-release > /dev/null
-sudo xbps-install -y lsb-release > /dev/null
-sudo apt install -y lsb-release > /dev/null
 
 # call alias workflow
 alias_workflow
+
+# call staging
+staging
+
+# clean up
+echo -e "${green}[+] Installation Successful"
+echo -e "[+] You might have to restart your terminal"
+echo -e "[+] Type 'key' in a new terminal to launch SkeletonKey${reset}"
+echo -e ${red}"[!] If typing 'key' does not work, check you have a supported shell with 'which \$SHELL'${reset}"
