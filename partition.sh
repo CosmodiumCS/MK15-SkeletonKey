@@ -1,5 +1,5 @@
 #!/bin/bash
 
 rm -rf ~/.SkeletonKey
-cp -r ~/Coding/Python/Projects/SkeletonKey ~
-mv ~/SkeletonKey ~/.SkeletonKey
+cp -r ../skeletonkey /home/bluecosmo/.SkeletonKey
+# mv ~/skeletonkey ~/.SkeletonKey

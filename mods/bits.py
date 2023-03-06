@@ -17,12 +17,43 @@ END = '\033[0m'
 
 version = open(f'{local_path}/version.txt').read().strip()
 banner = Fore.RED + f'''
+<<<<<<< HEAD
+                     _,=;::::::;=,,_
+                 _,;,ss*\":::::\'""sss;;,_
+               ,;,sSSSss::::::::*\"sSSss;;,
+             ,;,sSSSKKk*:::::::::*kkKKKKk;,
+            ,;kKKKKEEee::::::::::,eEEELEEe;,
+           ,;;;eEEEEEEe*:::::::::,lL\",LLLl;;;
+           ;ll;;LLLLLLl::::::::_Ll *LLLLl;ll;
+           ;*ll,lLLLEee:::::::*:::EeEEEE;*eE;
+           ;;*EeeEEEEee::::::::::*eEEEEE;eE;;
+           ;;;e\'eeEEeEe,_::::::_,eeEEEET;Tt;;
+            ;;t;\"\'\'  \'""=:::::::="\'   \'";;Tt\'
+             Ttt         \";::;*         t;T;
+             t;Tt.,,_ _,_::::;;     __,tT;T
+            =t;;*TTt=-=-=T:\' \';T=_=_=tTT;,Tt=
+            tTTT;\"ttT TT;t"   :tt tTo00;OO\'0
+              0Oo*oOOOo\'0\"    \':O OO0o0oOo0\'
+   ,,          ;OO:  \"0::,_,:,_::0*   OO0;
+ ,KkkK,       ,;0::  ;;,,,::::,,;;;   :O0;
+/k(  )k\\,,;k,,K;;,k,,,,;;;;;;;;;;;\',,,:;0,,,,,,__,yyyyyy***y
+{{KK}}{{KK}}KKKKKKKKKKKKKKKEEe.,eeEEEEEEEEYYYYYYYYYYYYYYYYYYYYY*
+\\k(  )k/\"";k""K;;"k"";;"""""\'\'\'\'\'\';;\'\'O\'\'\'}}YYY"YY"""\'\'"""
+ \'KkkK\'       \"  0.0o\';;;;;,,,;;;;"*N:;N  YYYyyy,
+   \'\'            \'\"n*n*n \'";;;;" n.n,n"    yYYy""
+                    \"n nNNn::*nNNn"n
+                      n,nN::::nNN*\"
+                        \"Nn,_,nN"
+
+              SkeletonKey Version : 0.{version}\n
+=======
             SkeletonKey Version : {version}\n
+>>>>>>> 156829c16b0f8691ffc27211154d3e99ead03298
 ''' + Fore.RESET
 
 help_menu = Fore.CYAN + """
 ┌─────────────────────────────────────────────────────────────┐
-│ [■] EXAMPLE: key cc -d -t "Encrypt Me" -k 5                 │
+│ [■] EXAMPLE: key cc -e -t "Encrypt Me" -k 5                 │
 │                                                             │
 │ [■] ARG 1. Cipher                                           │
 │       [cc] ───────── Caesar Cipher                          │
