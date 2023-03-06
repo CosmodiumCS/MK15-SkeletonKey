@@ -36,6 +36,7 @@
                                        n,nN::::nNN*"
                                          "Nn,_,nN"
 ```
+---
 
 ## Overview:
 SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium CyberSecurity][ccs] (with an original joint development with SSG). It was originally refereed to as "[The Codex Project](https://github.com/CosmodiumCS/the-codex-project)", and later "Cryptex" after a joint development. After a group conflict, the CCS developers left the group to create "SkeletonKey", which aims to become a leading cryptographic hacking suite. SkeletonKey is capable of advanced encryption, decryption, and breaking ciphers through various methods. These methods include but are not limited to brute-forcing, cryptographic word-listing, letter frequencies, plaintext formatting, and cracking.
