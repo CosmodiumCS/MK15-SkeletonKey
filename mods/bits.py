@@ -17,7 +17,6 @@ END = '\033[0m'
 
 version = open(f'{local_path}/version.txt').read().strip()
 banner = Fore.RED + f'''
-<<<<<<< HEAD
                      _,=;::::::;=,,_
                  _,;,ss*\":::::\'""sss;;,_
                ,;,sSSSss::::::::*\"sSSss;;,
@@ -45,10 +44,7 @@ banner = Fore.RED + f'''
                       n,nN::::nNN*\"
                         \"Nn,_,nN"
 
-              SkeletonKey Version : 0.{version}\n
-=======
             SkeletonKey Version : {version}\n
->>>>>>> 156829c16b0f8691ffc27211154d3e99ead03298
 ''' + Fore.RESET
 
 help_menu = Fore.CYAN + """
