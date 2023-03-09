@@ -58,7 +58,7 @@ function alias_workflow {
     fi
 
     #check if it already exists in zshrc
-    elif ! cat ~/.zshrc | grep "SkeletonKey_PATH" > /dev/null; then
+    if ! cat ~/.zshrc | grep "SkeletonKey_PATH" > /dev/null; then
         # Do it in one command instead of repeating yourself.
         echo "export SkeletonKey_PATH=\"~/.SkeletonKey\"\nalias key=\"python3 ~/.SkeletonKey/main.py\"
         " >> ~/.zshrc
