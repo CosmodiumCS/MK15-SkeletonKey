@@ -39,13 +39,14 @@
 ---
 
 ## Overview:
-SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium CyberSecurity][ccs] (with an original joint development with SSG). It was originally refereed to as "[The Codex Project](https://github.com/CosmodiumCS/the-codex-project)", and later "Cryptex" after a joint development. After a group conflict, the CCS developers left the group to create "SkeletonKey", which aims to become a leading cryptographic hacking suite. SkeletonKey is capable of advanced encryption, decryption, and breaking ciphers through various methods. These methods include but are not limited to brute-forcing, cryptographic word-listing, letter frequencies, plaintext formatting, and cracking.
+SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium CyberSecurity][ccs] (with an original joint development with SSG). It was originally refereed to as "[The Codex Project](https://github.com/CosmodiumCS/the-codex-project)", and later "[Cryptex](https://github.com/SSGorg/Cryptex-old)" after a joint development. After a group conflict, the CCS developers left the group to create "SkeletonKey", which aims to become a leading cryptographic hacking suite. SkeletonKey is capable of advanced encryption, decryption, and breaking ciphers through various methods. These methods include but are not limited to brute-forcing, cryptographic word-listing, letter frequencies, plaintext formatting, and cracking.
 
 ## Resources:
 - [YouTube Video](https://www.cosmodiumcs.com/comings-soon)
 - [YouTube Channel](https://youtube.com/cosmodiumcs)
 - [Website](https://cosmodiumcs.com)
 - [Earth Invader](https://github.com/CosmodiumCS/Earth-Invader) (SkeletonKey Discord Bot)
+- [Cryptex](https://github.com/SSGorg/Cryptex-old) (Original Project)
 
 ## Requirements:
 - Linux (see `install.sh --help`)
@@ -148,10 +149,14 @@ The Earth Invader bot is a Discord API extension of SkeletonKey, bringing the sa
 - Soulsender
 - [Cythes](https://github.com/AlexKollar)
 - [Mart](https://github.com/marvhus)
+- ItsJustShepheard
+
+## New Devs:
 - Haze
 
 ## Credits:
 As an open source project, SkeletonKey and Earth Invader do use snippets of code inspired and based on other projects such as the following:
+- [Cryptex](https://github.com/SSGorg/Cryptex-old)
 - [OnlyRAT](https://github.com/CosmodiumCS/OnlyRAT)
 - [Nirsoft](https://www.nirsoft.net)
 - [Satux](https://cosmodiumcs.com/coming-soon)
