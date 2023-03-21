@@ -148,6 +148,10 @@ The Earth Invader bot is a Discord API extension of SkeletonKey, bringing the sa
 - Soulsender
 - Haze
 
+## Retired Devs
+- Cythes
+- Mart
+
 ## Credits:
 As an open source project, SkeletonKey and Earth Invader do use snippets of code inspired and based on other projects such as the following:
 - [OnlyRAT](https://github.com/CosmodiumCS/OnlyRAT)
