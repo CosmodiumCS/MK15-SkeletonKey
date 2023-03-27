@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# created by : Mart | marvhus
+# created by : Hashlib devs
 
 import hashlib
 
