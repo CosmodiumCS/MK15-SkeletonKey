@@ -44,7 +44,7 @@ banner = Fore.RED + f'''
                       n,nN::::nNN*\"
                         \"Nn,_,nN"
 
-            SkeletonKey Version : {version}\n
+            SkeletonKey Version : 1.{version}\n
 ''' + Fore.RESET
 
 help_menu = Fore.CYAN + """
