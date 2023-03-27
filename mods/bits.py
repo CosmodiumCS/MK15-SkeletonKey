@@ -57,7 +57,6 @@ help_menu = Fore.CYAN + """
 │       [rc] ───────── Reverse Cipher                         │
 │       [mc] ───────── Multiplicative Cipher                  │
 │       [ct] ───────── Code Transcript                        │
-│       [se] ───────── Static Encryption                      │
 │       [mo] ───────── Monoalphabetic Cipher                  │
 │       [url] ──────── URL Encoding                           │
 │       [xor] ──────── XOR Cipher                             │
@@ -72,13 +71,10 @@ help_menu = Fore.CYAN + """
 │       [pho] ──────── Phonetic Alphabet Cipher               │
 │       [md5] ──────── MD5 Hash                               │
 │       [1337] ─────── L33T 5P34K Encoding                    │
-│       [menc] ─────── MENC Encoding                          │
 │       [sha1] ─────── SHA1 Hash                              │
 │       [sha224] ───── SHA224 Hash                            │
 │       [sha384] ───── SHA384 Hash                            │
 │       [sha512] ───── SHA512 Hash                            │
-│       [blake2b] ──── Blake2b Hash                           │
-│       [blake2s] ──── Blake2s Hash                           │
 │       [twofish] ──── Twofish Encryption                     │
 │       [blowfish] ─── Blowfish Encryption                    │
 │       [translate] ── Google Translate API                   │
@@ -87,10 +83,6 @@ help_menu = Fore.CYAN + """
 │       [-e] ────────── Encrypt/Encode                        │
 │       [-d] ────────── Decrypt/Decode                        │
 │       [-b] ────────── Break/Brute Force                     │
-│                                                             │
-│ [■] Google Translate API                                    │
-│       [-tr] ───────── Translate                             │
-│       [-lang] ─────── List Languages                        │
 ├─────────────────────────────────────────────────────────────┤
 │ [■] Additional Arguments                                    │
 │       [-t] ────────── Input Text                            │
