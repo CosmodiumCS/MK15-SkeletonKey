@@ -39,13 +39,13 @@
 ---
 
 ## Overview:
-SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium CyberSecurity][ccs] (with an original joint development with SSG). It was originally refereed to as "[The Codex Project](https://github.com/CosmodiumCS/the-codex-project)", and later "Cryptex" after a joint development. After a group conflict, the CCS developers left the group to create "SkeletonKey", which aims to become a leading cryptographic hacking suite. SkeletonKey is capable of advanced encryption, decryption, and breaking ciphers through various methods. These methods include but are not limited to brute-forcing, cryptographic word-listing, letter frequencies, plaintext formatting, and cracking.
+SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium CyberSecurity][ccs] SkeletonKey is capable of advanced encryption, decryption, and breaking ciphers through various methods. These methods include but are not limited to brute-forcing, cryptographic word-listing, letter frequencies, plaintext formatting, and cracking.
 
 ## Resources:
 - [YouTube Video](https://www.cosmodiumcs.com/comings-soon)
 - [YouTube Channel](https://youtube.com/cosmodiumcs)
 - [Website](https://cosmodiumcs.com)
-- [Earth Invader](https://github.com/CosmodiumCS/Earth-Invader) (SkeletonKey Discord Bot)
+- [Earth Invader Bot](https://github.com/CosmodiumCS/Earth-Invader) (SkeletonKey Discord Bot)
 
 ## Requirements:
 - Linux (see `install.sh --help`)
@@ -85,6 +85,7 @@ key cc
 - These arguments are the most popular among the ciphers
 - `-e` - encryption
 - `-d` - decryption
+- `-t` - text to encrypt
 - `-b` - breaking/brute-forcing
 - `-k` - encryption key
 - `-t` - input text
@@ -141,21 +142,10 @@ key
 ## Earth Invader Discord Bot:
 The Earth Invader bot is a Discord API extension of SkeletonKey, bringing the same cryptography tools to Discord as if it was your own cryptography console! Check it out [here](https://github.com/CosmodiumCS/Earth-Invader).
 
-
-## Original Devs:
-- Blue Cosmo
-- Fyzz
-- Soulsender
-- Haze
-
-## Retired Devs
-- Cythes
-- Mart
-
 ## Credits:
 As an open source project, SkeletonKey and Earth Invader do use snippets of code inspired and based on other projects such as the following:
 - [OnlyRAT](https://github.com/CosmodiumCS/OnlyRAT)
 - [Nirsoft](https://www.nirsoft.net)
 - [Satux](https://cosmodiumcs.com/coming-soon)
 - [Scarab](https://github.com/Soulsender/Scarab)
-- also, many thanks to [OreoByte](https://github.com/OreoByte/art-pool-current/tree/master/program_ascii_art/skeleton_key_dir) for creating the ASCII Art. be sure to check out his work :)
+- also, many thanks to [OreoByte](https://github.com/OreoByte/art-pool-current/tree/master/program_ascii_art/skeleton_key_dir) for hand creating the ASCII Art. be sure to check out his work :)
