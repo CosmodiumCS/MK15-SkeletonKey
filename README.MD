@@ -46,6 +46,7 @@ SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium Cyber
 - [YouTube Channel](https://youtube.com/cosmodiumcs)
 - [Website](https://cosmodiumcs.com)
 - [Earth Invader Bot](https://github.com/CosmodiumCS/Earth-Invader) (SkeletonKey Discord Bot)
+- [SkeletonKey GUI](https://github.com/CosmodiumCS/SkeletonKey-GUI) (Graphical interface for SkeletonKey)
 
 ## Requirements:
 - Linux (see `install.sh --help`)
