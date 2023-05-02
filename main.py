@@ -29,7 +29,7 @@ def get_ciphers():
 # updates skeletonkey
 def update():
 
-    cmd_prefix = Fore.GREEN + '[~] ' + Fore.RESET
+    cmd_prefix = f'{Fore.GREEN}[~] {Fore.RESET}'
     print("\n[*] Checking for updates...")
 
     # get latest version nubmer
@@ -52,9 +52,8 @@ def update():
 
         # update
         if option == "y":
-            os.system(f"sh ~/.SkeletonKey/resources/update.sh")
+            os.system("sh ~/.SkeletonKey/resources/update.sh")
 
-    # otherwise, run main code
     else:
         print("\n[+] SkeletonKey already up to date")
 
@@ -78,7 +77,7 @@ def output(data, output):
 # uninstalls skeletonkey
 def remove():
 
-    cmd_prefix = Fore.RED + '[~] ' + Fore.RESET
+    cmd_prefix = f'{Fore.RED}[~] {Fore.RESET}'
 
     # confirmation
     print("\n" + cmd_prefix + "Are you sure you want to remove SkeletonKey? [y/n]\n")
@@ -92,18 +91,17 @@ def remove():
 
 # command line interface
 def cli(args_exist):
-    cmd_prefix = Fore.CYAN + '[~] ' + Fore.RESET
+    cmd_prefix = f'{Fore.CYAN}[~] {Fore.RESET}'
 
     # default arguments
     if args_exist:
-        if sys.argv[1] == '-h' or sys.argv[1] == '--help':
+        if sys.argv[1] in ['-h', '--help']:
             print(b.help_menu)
-        elif sys.argv[1] == '-u' or sys.argv[1] == '--update':
+        elif sys.argv[1] in ['-u', '--update']:
             update()
-        elif sys.argv[1] == '-rm' or sys.argv[1] == '--remove' or sys.argv[1] == '--uninstall':
+        elif sys.argv[1] in ['-rm', '--remove', '--uninstall']:
             remove()
 
-        # layered encryption
         elif '+' in sys.argv:
             text = sys.argv[sys.argv.index('-t') + 1]
             sys.argv[sys.argv.index('-t') + 1] = f'"{text}"'
@@ -117,7 +115,7 @@ def cli(args_exist):
                     try:
                         with open('temp_storage.txt', 'r') as temp:
                             layerd_storage = temp.read()
-                    except:
+                    except Exception:
                         pass
                     else:
                         os.system(f'python3 ~/.SkeletonKey/main.py {layer} -t "{layerd_storage}" -lay')
@@ -125,13 +123,12 @@ def cli(args_exist):
                     try:
                         with open('temp_storage.txt', 'r') as temp:
                             layerd_storage = temp.read()
-                    except:
+                    except Exception:
                         pass
                     else:
                         os.system(f'python3 ~/.SkeletonKey/main.py {layer} -t "{layerd_storage}"')
                         os.remove('temp_storage.txt')
 
-        # flags for argument parsing
         else:
             parser = argparse.ArgumentParser(add_help=False, usage="")
             parser.add_argument('cipher', type=str)
@@ -176,27 +173,24 @@ def cli(args_exist):
 
             # reads input files for argument parsing
             if args.inputFile:
-                tmpFileVar = open(args.inputFile, 'r')
-                args.text = tmpFileVar.read()
-                tmpFileVar.close()
-
+                with open(args.inputFile, 'r') as tmpFileVar:
+                    args.text = tmpFileVar.read()
             # reads input file for wordlist
             if args.wordlist:
-                tmpFileVar = open(args.wordlist, 'r')
-                args.wordlist = tmpFileVar.read().split('\n')
-                args.wordlist = list(filter(lambda x : len(x) > 0, args.wordlist))
-                # ^ removes empty lines from the array
-                tmpFileVar.close()
-
+                with open(args.wordlist, 'r') as tmpFileVar:
+                    args.wordlist = tmpFileVar.read().split('\n')
+                    args.wordlist = list(filter(lambda x : len(x) > 0, args.wordlist))
             # execute skeletonkey libraries
             try:
                 module = importlib.import_module(f'ciphers.{args.cipher}')
 
-            # exception handling
-            except:
-                print(f"{b.FAIL}\n" + Fore.RED + f"[✖] Cipher May Not Exist\nTry 'key -h' to see all ciphers{b.END}\n" + Fore.RESET)
+            except Exception:
+                print(
+                    f"{b.FAIL}\n{Fore.RED}"
+                    + f"[✖] Cipher May Not Exist\nTry 'key -h' to see all ciphers{b.END}\n"
+                    + Fore.RESET
+                )
 
-            # executes libraries
             else:
                 func = None
 
@@ -213,7 +207,7 @@ def cli(args_exist):
                         output(["For now '-tr' or '-b' can only be the final step in layerd encryption", False], False)
                         try:
                             os.remove('temp_storage.txt')
-                        except:
+                        except Exception:
                             pass
 
                 elif args.encode:
@@ -227,7 +221,6 @@ def cli(args_exist):
                 elif args.lang:
                     output(module.languages(), args.output)
 
-                # cryptograhic payloads
                 elif args.payload:
                     func = module.payload
 
@@ -239,7 +232,7 @@ def cli(args_exist):
     else:
         # display banner
         print(b.banner)
-        print(cmd_prefix + 'Type "help" for help menu :')
+        print(f'{cmd_prefix}Type "help" for help menu :')
 
         # loop code
         while True:
@@ -250,28 +243,22 @@ def cli(args_exist):
             if user_input == 'help':
                 print(b.help_menu)
 
-            # display version number
             elif user_input == 'version':
                 print(b.version)
 
-            # exit skeletonkey
-            elif user_input == 'exit' or user_input == 'quit':
+            elif user_input in ['exit', 'quit']:
                 exit()
                 break
 
-            # update current version
             elif user_input == 'update':
                 update()
 
-            # uninstalls skeletonkey
-            elif user_input == 'uninstall' or user_input == 'remove':
+            elif user_input in ['uninstall', 'remove']:
                 remove()
 
-            #  runs unrecogonized commands into bash
             elif user_input.split(' ')[0] not in get_ciphers():
                 os.system(user_input)
 
-            # runs skeletonkey libraries
             else:
                 os.system(f'python3 ~/.SkeletonKey/main.py {user_input.replace("key", "")}')
 
