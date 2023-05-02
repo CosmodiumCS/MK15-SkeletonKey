@@ -29,35 +29,27 @@ EXAMPLES:
 
 # decode function [!] Each Cipher Must Have This <---------- [!]
 def encode(args):
-    # Getting text from all passed in args
-    # All other args can be grabbed the same way
-    # Example key = input.key | range = input.range
-    text = args.text
-    salt = args.salt
-
-    if text:
-        # Run Decode
-        output = f'Encoding | {text}'
-
-        # Detect Salt
-        if salt:
-            rawresult = hashlib.sha512( salt.encode('ascii') +
-                                 text.encode('ascii')  ).digest()
-            output += f'Salt | {salt}'
-        else:
-            rawresult = hashlib.sha512( text.encode('ascii')  ).digest()
-
-        result = rawresult.hex()
-
-        output += f"\nSHA512 Raw Sum | {rawresult}\nSHA512 Sum | {result}"
-
-        # Output content as string for main.py to print
-        # Pass True if Success Message
-        return [output,True]
-    else:
+    if not (text := args.text):
         # Pass False if Fail Message
         # Return Nothing to have no output
         return [f'"{text}" is not a valid input for -t', False]
+    # Run Decode
+    output = f'Encoding | {text}'
+
+    if salt := args.salt:
+        rawresult = hashlib.sha512( salt.encode('ascii') +
+                             text.encode('ascii')  ).digest()
+        output += f'Salt | {salt}'
+    else:
+        rawresult = hashlib.sha512( text.encode('ascii')  ).digest()
+
+    result = rawresult.hex()
+
+    output += f"\nSHA512 Raw Sum | {rawresult}\nSHA512 Sum | {result}"
+
+    # Output content as string for main.py to print
+    # Pass True if Success Message
+    return [output,True]
 
 # brute function [!] Optional Per Cipher <----------------- [!]
 def brute(args):
@@ -70,59 +62,59 @@ def brute(args):
         return ["Please only pick one '-r' or '-w\'", False]
 
     if text and args.wordlist:
-        wordlist = args.wordlist
-
-        # Run Decode
-        output = f'Bruteforcing | {text}'
-
-        length = len(wordlist)
-
-        print()
-        for i, word in enumerate(wordlist):
-            print(f'Checking {i + 1}/{length}', end='\r')
-            guess = hashlib.sha512( word.encode('ascii') ).hexdigest()
-            if guess.lower() == text.lower():
-                output += f'\nDecoded SHA512 | {word}'
-                return [output, True]
-            continuear
-        print()
-
-        output = "Not found in wordlist"
-        # Output content as string for main.py to print
-        # Pass True if Success Message
-        return [output, False]
-
+        return bruteforcing(args, text)
     if text and args.range:
-        import string
-        import itertools
-
-        alphabet = string.ascii_letters + string.punctuation + string.digits
-        range_ = int(args.range)
-
-        if range_ <= 0:
-            return ["Can't use a range that is 0 or lower", False]
-
-        i = 0
-        print()
-        for item in itertools.product(alphabet, repeat=range_):
-            i += 1
-            guess = "".join(item)
-            print(f'Attempt {i} -- {guess}', end='\r')
-            result = hashlib.sha512( guess.encode('ascii') ).hexdigest()
-
-            if result.lower() == text.lower():
-                return [f'Decoded SHA512 | {guess}', True]
-        print()
-
-        return [f'Did not decode SHA512 with max range of {range_}', False]
-
-
+        return decoding_SHA512(args, text)
     # Pass False if Fail Message
     # Return Nothing to have no output
 
-    if not text:
-        return [f'"{text}" is not a valid input for -t', False]
+    return (
+        ['Unknown error', False]
+        if text
+        else [f'"{text}" is not a valid input for -t', False]
+    )
 
-    return ['Unknown error', False]
+def decoding_SHA512(args, text):
+    import string
+    import itertools
+
+    alphabet = string.ascii_letters + string.punctuation + string.digits
+    range_ = int(args.range)
+
+    if range_ <= 0:
+        return ["Can't use a range that is 0 or lower", False]
+
+    print()
+    for i, item in enumerate(itertools.product(alphabet, repeat=range_), start=1):
+        guess = "".join(item)
+        print(f'Attempt {i} -- {guess}', end='\r')
+        result = hashlib.sha512( guess.encode('ascii') ).hexdigest()
+
+        if result.lower() == text.lower():
+            return [f'Decoded SHA512 | {guess}', True]
+    print()
+
+    return [f'Did not decode SHA512 with max range of {range_}', False]
 
 
+def bruteforcing(args, text):
+    wordlist = args.wordlist
+
+    # Run Decode
+    output = f'Bruteforcing | {text}'
+
+    length = len(wordlist)
+
+    print()
+    for i, word in enumerate(wordlist):
+        print(f'Checking {i + 1}/{length}', end='\r')
+        guess = hashlib.sha512( word.encode('ascii') ).hexdigest()
+        if guess.lower() == text.lower():
+            output += f'\nDecoded SHA512 | {word}'
+            return [output, True]
+    print()
+
+    output = "Not found in wordlist"
+    # Output content as string for main.py to print
+    # Pass True if Success Message
+    return [output, False]
