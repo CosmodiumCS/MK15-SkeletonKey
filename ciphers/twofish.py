@@ -36,92 +36,71 @@ def encode(args):
             rawciphertext = secret.encrypt(bytes(text.encode('ascii')))
             ciphertext = rawciphertext.hex()
 
-            output = "Encrypting | {}\nKey | {}\nRaw Ciphertext | {}\nCiphertext | {}".format(
-                                text, key, rawciphertext, ciphertext)
-            
-            # check for output file
-            if args.output:
-                return [ciphertext, True]
+            output = f"Encrypting | {text}\nKey | {key}\nRaw Ciphertext | {rawciphertext}\nCiphertext | {ciphertext}"
 
-            else:
-                return [output, True]
-        
-        # invalid block & key length error handling
+            # check for output file
+            return [ciphertext, True] if args.output else [output, True]
         else:
             if len(text.encode('utf-8')) != 16:
-                return ['Error: Invalid Block Length {}, must be 16 bytes'.format(
-                                text), False]
-            
+                return [f'Error: Invalid Block Length {text}, must be 16 bytes', False]
+
             elif len(key) > 32:
-                return ['Error: Invalid key Length {}, must be 1 to 32 characters long'.format(
-                                key), False]
+                return [
+                    f'Error: Invalid key Length {key}, must be 1 to 32 characters long',
+                    False,
+                ]
 
             else:
                 return ['Error: Make sure to have a 16 byte block and a key', False]
 
-    # input error handling
+    elif text is None and key is None:
+        return ['Error: No text or key supplied', False]
+
+    elif text is None:
+        return ['Error: No text supplied', False]
+
+    elif key is None:
+        return ['Error: No key supplied', False]
+
     else:
-        if text == None and key == None:
-            return ['Error: No text or key supplied', False]
-
-        elif text == None and key != None:
-            return ['Error: No text supplied', False]
-        
-        elif key == None and text != None:
-            return ['Error: No key supplied', False]
-
-        else:
-            return ['Error: Make sure to use a 16 byte string and a key', False]
+        return ['Error: Make sure to use a 16 byte string and a key', False]
 
 def decode(args):
     ciphertext = args.text
     key = args.key
 
-    # check for valid input
     if ciphertext and key:
-        # check for valid block & key length
-        if len(key) <= 32:
-            secret = Twofish(bytes(key.encode('ascii')))
-            rawciphertext = bytes.fromhex(ciphertext)
+        return decryption(key, ciphertext, args)
+    if ciphertext is None and key is None:
+        return ['Error: No text or key supplied', False]
 
-            # decode attempt
-            try:
-                plaintext = secret.decrypt(bytes.fromhex(ciphertext)).decode()
+    elif ciphertext is None:
+        return ['Error: No text supplied', False]
 
-            # decode attempt failure handling
-            except:
-                plaintext = secret.decrypt(bytes.fromhex(ciphertext))
-    
-            output = "Decrypting | {}\nRaw Ciphertext | {}\nKey | {}\nPlaintext | {}".format(
-                                ciphertext, rawciphertext, key, plaintext)
+    elif key is None:
+        return ['Error: No key supplied', False]
 
-            # check for output file
-            if args.output:
-                return [plaintext, True]
-        
-            else:
-                return [output, True]
-
-        # invalid block & key length error handling
-        else:
-            if len(key) > 32:
-                return ['Error: Invalid key Length {}, must be 1 to 32 characters long'.format(
-                                key), False]
-
-            else:
-                return ['Error: Make sure to have a 16 byte block and a key', False]
-
-    # input error handling
     else:
-        if ciphertext == None and key == None:
-            return ['Error: No text or key supplied', False]
+        return ['Error: Make sure to use a 16 byte string and a key', False]
 
-        elif ciphertext == None and key != None:
-            return ['Error: No text supplied', False]
 
-        elif key == None and ciphertext != None:
-            return ['Error: No key supplied', False]
+def decryption(key, ciphertext, args):
+    if len(key) > 32:
+        return [
+            f'Error: Invalid key Length {key}, must be 1 to 32 characters long',
+            False,
+        ]
 
-        else:
-            return ['Error: Make sure to use a 16 byte string and a key', False]
+    secret = Twofish(bytes(key.encode('ascii')))
+    rawciphertext = bytes.fromhex(ciphertext)
 
+    # decode attempt
+    try:
+        plaintext = secret.decrypt(bytes.fromhex(ciphertext)).decode()
+
+    except Exception:
+        plaintext = secret.decrypt(bytes.fromhex(ciphertext))
+
+    output = f"Decrypting | {ciphertext}\nRaw Ciphertext | {rawciphertext}\nKey | {key}\nPlaintext | {plaintext}"
+
+    return [plaintext, True] if args.output else [output, True]
