@@ -151,3 +151,4 @@ As an open source project, SkeletonKey and Earth Invader do use snippets of code
 - [Scarab](https://github.com/Soulsender/Scarab)
 - also, many thanks to [OreoByte](https://github.com/OreoByte/art-pool-current/tree/master/program_ascii_art/skeleton_key_dir) for hand creating the ASCII Art. be sure to check out his work :)
 - [Cythes](https://github.com/AlexKollar)
+- [Cryptex](https://github.com/SSGorg/Cryptex-old)
