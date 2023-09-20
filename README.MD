@@ -39,7 +39,7 @@
 ---
 
 ## Overview:
-SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium CyberSecurity][ccs] SkeletonKey is capable of advanced encryption, decryption, and breaking ciphers through various methods. These methods include but are not limited to brute-forcing, cryptographic word-listing, letter frequencies, plaintext formatting, and cracking. We would like to give a specal thanks to the the team at SSG. This started as a comunity project between CCS and SSG. The original project can be found here. [Cryptex](https://github.com/SSGOrg/Cryptex-old)
+SkeletonKey is an advanced cryptography hacking tool created by [Cosmodium CyberSecurity][ccs] SkeletonKey is capable of advanced encryption, decryption, and breaking ciphers through various methods. These methods include but are not limited to brute-forcing, cryptographic word-listing, letter frequencies, plaintext formatting, and cracking. We would like to give a specal thanks to the team at SSG. This started as a comunity project between CCS and SSG. The original project can be found here. [Cryptex](https://github.com/SSGOrg/Cryptex-old)
 
 ## Resources:
 - [YouTube Video](https://www.cosmodiumcs.com/comings-soon)
